@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">en_GB</string>
+  <string-array name="nv_tablets_paragraphs">
+    <item>Text for\nPOSTERS</item>
+    <item>DISPLAY\nand advertise clearly.</item>
+    <item>LARGE head lines\nand children’s primers.\nnose-one-cause-even</item>
+    <item>Book titles and paragraphs\nheadings in newspapers are\noften set in type like this, usually\nin CAPITAL LETTERS\nwere-crone-our-summer</item>
+    <item>Books printed on very large pages and\nhaving many words on each line frequently\nuse letters similar to this specimen.\nname-use-means-arose</item>
+    <item>Novels, magazines, text-books and printed\ninstructions are generally set in characters\nof about this size.\nnear-can-remove-sure</item>
+    <item>The news columns in most of the daily papers use this as the\naverage size of print. Sometimes, the letters are larger than this,\nbut seldom are they smaller.\ncrow-verse-see-renew</item>
+    <item>This is the smallest size type in general use. It is used for the classified advertisements\nin some papers, telephone directories, timetables, pocket diaries, and similar lists and\nbooks of reference.\nassume-once-vane-sum</item>
+    <item>Printing of this size is only used for special purposes, for ex ample, the small advertisements\nand financial columns in some journals, for small index lines and references, and pocket bibles\nand prayer books.\naware-caves-sea-cream</item>
+  </string-array>
+  <string-array name="unit">
+    <item>N36</item>
+    <item>N24</item>
+    <item>N18</item>
+    <item>N14</item>
+    <item>N12</item>
+    <item>N10</item>
+    <item>N8</item>
+    <item>N6</item>
+    <item>N5</item>
+  </string-array>
+  
+  
+      <string-array name="font_size">
+        <item>92</item>
+        <item>61</item>
+        <item>46</item>
+        <item>36</item>
+        <item>31</item>
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>13</item>
+    </string-array>
+</resources>

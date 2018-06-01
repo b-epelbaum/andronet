@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CameraLayout">
+        <attr name="camera_side" format="string" />
+    </declare-styleable>
+    <declare-styleable name="AccessoriesLayout">
+        <attr name="accessories_side" format="string" />
+    </declare-styleable>
+    <declare-styleable name="FontTextView">
+           <attr name="font_type" format="enum">
+            <enum name="HelveticaNeue"        value="0"/>
+            <enum name="HelveticaNeueLight"   value="1"/>
+            <enum name="HelveticaNeueLTStdBlkCn" value="2"/>
+            <enum name="HelveticaNeueLTStdIt" value="3"/>
+            <enum name="HelveticaNeueLTStdLt" value="4"/>
+            <enum name="motschcc"  value="5"/>
+            <enum name="symbol"  value="6"/>
+            <enum name="UniversLTStdBoldCn" value="7"/>
+            <enum name="UniversLTStdLightCn" value="8"/>
+            <enum name="UniversLTStdBold"  value="9"/>
+               <enum name="timesi"  value="10"/>
+               <enum name="timesbi"  value="11"/>
+               <enum name="timesbd"  value="12"/>
+               <enum name="times"  value="13"/>
+
+
+
+
+
+
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="TwoSidedSwitch">
+        <attr name="mode" format="string" />
+    </declare-styleable>
+
+</resources>

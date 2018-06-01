@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Mini Tablet</string>
+    <string name="splash_version_name">Version %s MiniTablet App</string>
+    <string-array name="vxlan_list" >
+        <item>"Other"</item>
+        <item>"VXLAN"</item>
+        <item>"VXLAN1"</item>
+        <item>"VXLAN2"</item>
+        <item>"VXLAN3"</item>
+        <item>"VXLAN4"</item>
+        <item>"VXLAN5"</item>
+        <item>"VXLAN6"</item>
+        <item>"VXLAN7"</item>
+        <item>"VXLAN8"</item>
+        <item>"VXLAN9"</item>
+        <item>"VXLAN10"</item>
+    </string-array>
+        <string name="language_prefix">en_gb</string>
+    <string-array name="nv_tablets_paragraphs">
+        <item>In a beautiful\nmeadow near\nthe lake</item>
+        <item>The soft breeze made\nsmall impressions on the\nsurface of the water</item>
+        <item>The tiny waves seemed to go on\nfor miles and miles</item>
+        <item>Out across the meadow there were deer\ngrazing on the grass which was\ncovered in the morning dew</item>
+        <item>Never had there been such a marvellous\nmorning in all my life</item>
+        <item>The sky had the slightest of clouds, a subtle streak\nof white here and there against the magnificent\nexpanse of blue</item>
+        <item>Above the trees, the birds circled in flight, calling out to one\nanother in the sweetest of nature’s melodies</item>
+        <item>All around me the sound of nature was alive and new.\nThe beauty of this morning overwhelmed me.</item>
+        <item>The sun warmed my face as I gazed about in wonder and awe at the day unfolding before me.</item>
+    </string-array>
+        <string-array name="unit">
+            <item>N36</item>
+            <item>N24</item>
+            <item>N18</item>
+            <item>N14</item>
+            <item>N12</item>
+            <item>N10</item>
+            <item>N8</item>
+            <item>N6</item>
+            <item>N5</item>
+        </string-array>
+    <string-array name="font_size">
+        <item>92</item>
+        <item>61</item>
+        <item>46</item>
+        <item>36</item>
+        <item>31</item>
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>13</item>
+    </string-array>
+    </resources>

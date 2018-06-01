@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/black">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:paddingLeft="70dp"
+        android:paddingRight="60dp"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.davids.minitabletapp.Widget.FontTextView
+            android:layout_marginTop="40dp"
+            app:font_type="timesbd"
+            android:id="@+id/headerText"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:text="28 pt."
+            android:textSize="14pt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.example.davids.minitabletapp.Widget.FontTextView
+
+            android:id="@+id/stringText"
+            app:font_type="timesbd"
+
+            android:gravity="center"
+            android:textSize="28pt"
+            android:textColor="#000000"
+            android:text="In a beautiful meadow near\nthe lake"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ImageView
+
+        android:scaleType="fitXY"
+
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+    <WebView
+        android:id="@+id/nv_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+
+    <Button
+        android:id="@+id/settings_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="Settings" />
+    <com.example.davids.minitabletapp.Widget.PhoriaView
+        android:id="@+id/phoriaView"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.davids.minitabletapp.Widget.PhoriaView>
+</RelativeLayout>

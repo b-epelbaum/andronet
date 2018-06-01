@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
+    android:background="@color/general_background_color">
+
+    <View
+        android:id="@+id/splash_anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/splash_anchor"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/splash_logo" />
+
+    <LinearLayout
+        android:id="@+id/maintenance_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Initialization problem occurred" />
+
+        <Button
+            android:id="@+id/open_maintenance"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Maintenance" />
+
+        <Button
+            android:id="@+id/reconnect_messages"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="Reconnect" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/splash_anchor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="#3d8bb1"
+
+          >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Spinner
+                android:id="@+id/vxLanSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:background="@null"
+                android:spinnerMode="dropdown" />
+
+            <View
+
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/ic_arrow_drop_down_wwhite" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/version_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:text="Version 1.62 Vx160 app"
+        android:textColor="@color/splash_build_text_color"
+        android:textSize="17dp" />
+
+    <Button
+        android:id="@+id/force_open"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:text="Force open" />
+
+</RelativeLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="language_prefix">Fr</string>
+    <string-array name="nv_tablets_paragraphs">
+        <item>C\’est de là que je vous\nécris, ma porte grande\nouverte, au bon soleil</item>
+        <item>Un joli bois de pins tout étincelant de\nlumière dégringole devant moi jusqu’au\nbas de la côte. À l’horizon, les Alpilles\ndécoupent leurs crêtes fines... </item>
+        <item>Pas de bruit... À peine, de loin en loin, un son de\nfifre, un courlis dans les lavandes, un grelot de\nmules sur la route... Tout ce beau paysage\nprovençal ne vit que par la lumière. Et\nmaintenant, comment voulez-vous que je le\nregrette, votre Paris bruyant et noir ?</item>
+        <item>Je suis si bien dans mon moulin ! C’est si bien le coin que je\ncherchais, un petit coin parfumé et chaud, à mille lieues\ndes journaux, des fiacres, du brouillard !... Et que de jolies\nchoses autour de moi ! Il y a à peine huit jours que je suis\ninstallé, j’ai déjà la tête bourrée d’impressions et de souvenirs... </item>
+        <item>Tenez ! pas plus tard qu’hier soir, j’ai assisté à la rentrée des\ntroupeaux dans un mas (une ferme) qui est au bas de la côte,\net je vous jure que je ne donnerais pas ce spectacle pour toutes\nles premières que vous avez eues à Paris cette semaine.\nJugez plutôt. Il faut vous dire qu’en Provence, c’est l’usage,\nquand viennent les chaleurs, d’envoyer le bétail dans les Alpes. </item>
+        <item>Bêtes et gens passent cinq ou six mois là-haut, logés à la belle étoile, dans l’herbe\njusqu’au ventre ; puis, au premier frisson de l’automne, on redescend au mas,\net l’on revient brouter bourgeoisement les petites collines grises que parfume le romarin...\nDonc hier soir les troupeaux rentraient. Depuis le matin, le portail attendait,\nouvert à deux battants ; les bergeries étaient pleines de paille fraîche.</item>
+        <item>D’heure en heure on se disait : « Maintenant, ils sont à Eyguières, maintenant au Paradou. »\nPuis, tout à coup, vers le soir, un grand cri : « Les voilà ! » et là-bas, au lointain, nous voyons\nle troupeau s’avancer dans une gloire de poussière. Toute la route semble marcher avec lui...\nLes vieux béliers viennent d’abord, la corne en avant, l’air sauvage ; derrière eux le gros des\nmoutons, les mères un peu lasses, leurs nourrissons dans les pattes ; – les mules à pompons\nrouges portant dans des paniers les agnelets d’un jour qu’elles bercent en marchant ; puis les\nchiens tout suants, avec des langues jusqu’à terre, et deux grands coquins de bergers drapés\ndans des manteaux de cadis roux qui leur tombent sur les talons comme des chapes.</item>
+        <item>Tout cela défile devant nous joyeusement et s’engouffre sous le portail, en piétinant avec un bruit d’averse... Il faut voir quel\némoi dans la maison. Du haut de leur perchoir, les gros paons vert et or, à crête de tulle, ont reconnu les arrivants et les\naccueillent par un formidable coup de trompette. Le poulailler, qui s’endormait, se réveille en sursaut. Tout le monde est sur\npied : pigeons, canards, dindons, pintades. La basse-cour est comme folle ; les poulets parlent de passer la nuit !... On dirait\nque chaque mouton a rapporté dans sa laine, avec un parfum d’Alpe sauvage, un peu de cet air vif des montagnes qui grise\net qui fait danser. C’est au milieu de tout ce train que le troupeau gagne son gîte. Rien de charmant comme cette installation.\nLes vieux béliers s’attendrissent en revoyant leur crèche.</item>
+        <item>Les agneaux, les tout petits, ceux qui sont nés dans le voyage et n’ont jamais vu la ferme, regardent autour d’eux avec étonnement.\nMais le plus touchant encore, ce sont les chiens, ces braves chiens de berger, tout affairés après leurs bêtes et ne voyant qu’elles dans le mas. Le chien de garde a beau\nles appeler du fond de sa niche : le seau du puits, tout plein d’eau fraîche, a beau leur faire signe : ils ne veulent rien voir, rien entendre, avant que le bétail soit rentré,\nle gros loquet poussé sur la petite porte à claire-voie, et les bergers attablés dans la salle basse. Alors seulement ils consentent à gagner le chenil, et là, tout en lapant\nleur écuellée de soupe, ils racontent à leurs camarades de la ferme ce qu’ils ont fait là-haut dans la montagne, un pays noir où il y a des loups et de grandes digitales\nde pourpre pleines de rosée jusqu’au bord.</item>
+    </string-array>
+    <string-array name="unit">
+        <item>14 (0,1) </item>
+        <item>10 (0,15)</item>
+        <item>8 (0,18)</item>
+        <item>6 (0,24)</item>
+        <item>5 (0,27)</item>
+        <item>4 (0,32)</item>
+        <item>3 (0,37) </item>
+        <item>2 (0,51)</item>
+        <item>1.5 (0,75)</item>
+    </string-array>
+
+    <string-array name="font_size">
+        <item>75</item>
+        <item>50</item>
+        <item>41.7</item>
+        <item>31.3</item>
+        <item>27.8</item>
+        <item>23.4</item>
+        <item>20.3</item>
+        <item>14.7</item>
+        <item>10</item>
+    </string-array>
+</resources>

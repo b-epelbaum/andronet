@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="language_prefix">de_LU</string>
+    <string-array name="nv_tablets_paragraphs">
+        <item/>
+        <item>Eine neue Brille\nfür Sie?</item>
+        <item>Und jetzt noch schnell das\nWichtigste: die Leseprobe!</item>
+        <item>Damit wollen wir sicherstellen, dass\nSie mit der neuen Brille auch wirklich\noptimal sehen können. Denn Ihre\n100%ige Zufriedenheit liegt uns sehr\nam Herzen.</item>
+        <item>Diesen Satz sollten Sie gut erkennen können.\nWenn nicht, sagen Sie uns Bescheid!\nJetzt wird‘s gleich noch etwas kleiner.</item>
+        <item>Dies ist die Größe der Überschriften in Tageszeitungen.\nDie Schriftgröße der Zeitungsartikel folgt im nächsten\nAbsatz.</item>
+        <item>Denn die sind schon etwas kleiner gedruckt. In dieser Größe ist vielleicht\nauch Ihr Lieblingskrimi verfasst. Wenn Sie diesen Text nicht optimal lesen\nkönnen, müssen wir an Ihrer Brille aber noch etwas tun.</item>
+        <item>Jetzt wird es amtlich! Die meisten Verträge und Formulare sind in dieser Größe.\nDas Kleingedruckte stellt sich ja oft als das Wesentliche heraus. Beipackzettel von\nMedikamenten oder Zifferblätter von Armbanduhren sind noch andere Beispiele.</item>
+        <item>Kommen wir zum Ende. Wenn Sie bis hierhin alles ohne Schwierigkeiten lesen konnten, können Sie mit Ihrer\nneuen Brille mehr als zufrieden sein. Sie haben wieder die optimale Sehschärfe. Genießen Sie Ihre neue Brille,\nnur das Beste für Ihre Augen, natürlich von Apollo-Optik.</item>
+    </string-array>
+    <string-array name="unit">
+        <item></item>
+        <item>0,1</item>
+        <item>0,2</item>
+        <item>0,25</item>
+        <item>0,32</item>
+        <item>0,4</item>
+        <item>0,5</item>
+        <item>0,63</item>
+        <item>0,8</item>
+
+    </string-array>
+    <string-array name="font_size">
+        <item>0</item>
+        <item>84</item>
+        <item>42</item>
+        <item>34</item>
+        <item>26</item>
+        <item>21</item>
+        <item>17</item>
+        <item>13</item>
+        <item>11</item>
+
+    </string-array>
+</resources>

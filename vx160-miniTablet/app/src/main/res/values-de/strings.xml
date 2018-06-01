@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="language_prefix">de</string>
+    <string-array name="nv_tablets_paragraphs">
+        <item>Heinrich Hoffmanns\nDer Struwwelpeter\nDie Geschichte vom wilden Jäger</item>
+        <item>Es zog der wilde Jägersmann\nSein grasgrün neues Röcklein an;\nNahm Ranzen, Pulverhorn und Flint’-\nUnd lief hinaus in’s Feld geschwind.</item>
+        <item>Er trug die Brille auf der Nas’\nUnd wollte schießen tot den Has.</item>
+        <item>Das Häschen sitzt im Blätterhaus\nUnd lacht den wilden Jäger aus.</item>
+        <item>Jetzt schien die Sonne gar zu sehr,\nDa ward ihm sein Gewehr zu schwer.</item>
+        <item>Er legte sich ins grüne Gras;\nDas alles sah der kleine Has.</item>
+        <item>Und als der Jäger schnarcht’ und schlief,\nDer Has ganz heimlich zu ihm lief</item>
+        <item>Und nahm die Flint’ und auch die Brill’\nUnd schlich davon ganz leis’ und still.</item>
+        <item>Die Brille hat das Häschen jetzt\nSich selbst auf seine Nas’ gesetzt;\nUnd schießen will’s aus dem Gewehr.\nDer Jäger aber fürcht’ sich sehr.\nEr läuft davon und springt und schreit:\n„Zu Hilf’, ihr Leut’, zu Hilf’, ihr Leut’!“</item>
+    </string-array>
+    <string-array name="unit">
+        <item>28pt.</item>
+        <item>24pt.</item>
+        <item>20pt.</item>
+        <item>18pt.</item>
+        <item>16pt.</item>
+        <item>14pt.</item>
+        <item>12pt.</item>
+        <item>10pt.</item>
+        <item>8pt.</item>
+    </string-array>
+
+    <string-array name="font_size">
+        <item>50</item>
+        <item>43</item>
+        <item>36</item>
+        <item>32</item>
+        <item>29</item>
+        <item>25</item>
+        <item>21.5</item>
+        <item>18</item>
+        <item>14.5</item>
+    </string-array>
+</resources>

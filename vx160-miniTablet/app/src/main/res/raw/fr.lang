@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">fr</string>
+  <!--near vision text paragraphs-->
+  <string-array name="nv_tablets_paragraphs">
+    <item>Marcel Pagol : 
+La glorie de mon pere</item>
+    <item>Mon pere, soucieux de lavancement
+de nos etudes nous consella de renoncer</item>
+    <item>et de commencer par cells</item>
+    <item>pendant que ma mere et ms kanter</item>
+    <item/>
+    <item>Je massurau dabroad que personne ne pouvait nous voir</item>
+    <item/>
+    <item>Jenfoncai aloas dans le tru une meche de papier</item>
+    <item>et lexplosion bryante de la reine</item>
+  </string-array>
+</resources>

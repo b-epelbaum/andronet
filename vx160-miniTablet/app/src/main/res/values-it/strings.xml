@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string-array name="nv_tablets_paragraphs">
+        <item>Vedere bene è molto\nimportante.\n10 63 59 27 38</item>
+        <item>Vedere influisce sulla qualità\ndella vita.\n02 54 60 81 43</item>
+        <item>Con gli occhi raccogliamo tantissime\ninformazioni, più che con qualsiasi\naltro organo sensoriale.\n36 75 82 94 19</item>
+        <item>I nostri occhi aiutano ad orientarci,\na comunicare senza usare parole,\na percepire forme e colori.\n23 78 17 91 04</item>
+        <item>Una visione nitida influisce positivamente sulla\nqualità della nostra vita. Dopo i 40 anni, a causa del\nnaturale processo d‘invecchiamento, la maggior\nparte delle persone comincia ad avere difficoltà\nnel vedere nitidamente da vicino.\n78 32 51 01 49</item>
+        <item>I primi segnali sono quando, ad esempio, si legge un libro\no un giornale e si sente il bisogno di tenerli a una distanza\nsempre maggiore dagli occhi, finché la lunghezza del\nbraccio non basta più.\n28 59 63 14 70</item>
+        <item>Per migliorare la qualità visiva, le aziende di lenti hanno sviluppato lenti\nprogressive che consentono di vedere in modo naturale a tutte le\ndistanze, da vicino e da lontano, senza le fastidiose divisioni tra le\nzone funzionali di visione, come nelle tradizionali lenti bifocali.\n23 45 96 10 87</item>
+        <item>Quando leggi, lavori al pc, esegui lavori manuali, di artigianato, di giardinaggio o ancora suoni\nuno strumento, desideri comunque tenere sempre sott‘occhio l‘ambiente circostante. I normali\nocchiali da lettura, tuttavia, non sono sufficienti, poiché coprono solo una distanza ravvicinata,\nche non va oltre i 40 cm. Le lenti riposanti per vicino sono la soluzione ideale per lavorare al pc.\n80 75 31 92 46</item>
+        <item>Il tuo sguardo in questo modo potrà comodamente spaziare dal foglio, alla tastiera, al monitor in modo fluido. Il miglioramento dell‘area di visione nella\ndistanza intermedia consente di lavorare al PC senza affaticare gli occhi. Queste lenti costituiscono la scelta giusta per chi desidera vedere in modo\nconfortevole e rilassato durante numerose attività che richiedono una buona visione da vicino, come ad esempio il bricolage, il cucito o lavori manuali.\n51 63 47 89 02</item>
+    </string-array>
+    <string-array name="unit">
+        <item>0,1</item>
+        <item>0,2</item>
+        <item>0,25</item>
+        <item>0,32</item>
+        <item>0,4</item>
+        <item>0,5</item>
+        <item>0,6</item>
+        <item>0,7</item>
+        <item>0,8</item>
+    </string-array>
+
+
+    <string-array name="font_size">
+        <item>75</item>
+        <item>37.5</item>
+        <item>30</item>
+        <item>23.4</item>
+        <item>18.8</item>
+        <item>15</item>
+        <item>12.5</item>
+        <item>10.7</item>
+        <item>9.4</item>
+    </string-array>
+</resources>

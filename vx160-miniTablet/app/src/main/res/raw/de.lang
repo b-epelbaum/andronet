@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">de</string>
+  <!--near vision text paragraphs-->
+  <string-array name="nv_tablets_paragraphs">
+    <item>Die Blenchtrommel</item>
+    <item>Meinen Freund Klepp und dem mit 
+halbem Ohr hinhorenden Pfleger Bruno,</item>
+    <item>Oskars este Begegnung mit dem
+Studenplan eruzalend, sagte ich soeben:
+Auf jener Schultafel, die dem Fotogram</item>
+    <item>den tradition Hinterfround fur postkarate</item>
+    <item/>
+    <item>Schultag</item>
+    <item/>
+    <item>Tafel mit Inscrift konnten</item>
+    <item>anlBlich ihers ersten Schultages gemacht worden waren</item>
+  </string-array>
+</resources>

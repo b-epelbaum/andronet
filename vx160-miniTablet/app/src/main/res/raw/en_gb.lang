@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">en_gb</string>
+  <!--near vision text paragraphs-->
+  <string-array name="nv_tablets_paragraphs">
+    <item>In a beautiful meadow
+near the lake</item>
+    <item>The soft breeze made small 
+impressions on the surface of the water</item>
+    <item>The tiny waves seemed to go
+on for miles and miles </item>
+    <item>Out across the meadow there were deer grazing on
+the graa which was covered in morning dew</item>
+    <item>Never had there been such a marvelous 
+morning in all of my life</item>
+    <item>The sky had the slightest of clouds, a subtle streak of white here and there against the magnificent expanse of blue</item>
+    <item>Above the trees the birds circled in flight calling out to one 
+another ub the sweetest of nature's melodies</item>
+    <item>All above around me the sound of nature was alive and new.
+The beauty of this meaning overwhelming me</item>
+    <item>The sun warmed my face as I gazed about in wonder and
+awe at the day unfolding before me </item>
+  </string-array>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">it</string>
+  <!--near vision text paragraphs-->
+  <string-array name="nv_tablets_paragraphs">
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+    <item/>
+  </string-array>
+</resources>

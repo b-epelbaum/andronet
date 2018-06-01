@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+
+    <string-array name="nv_tablets_paragraphs">
+        <item>En la naturaleza existen animales con todo tipo de sistemas visuales.</item>
+        <item>Con párpados y sin\nellos, ojos dobles,\nsimples y complejos…</item>
+        <item>Y cada uno proporciona\nuna visión del mundo muy\ndiferente.</item>
+        <item>Está claro que los ojos de cada ser\nvivo están diseñados y proporcionan\nla información que éste necesita, en\nfunción del entorno en el que se mueve,\nde sus depredadores, de su alimentación…</item>
+        <item>Por ejemplo, en el caso de los peces su\nvisión está adaptada al medio acuático,\npero las características concretas de sus\nojos dependerán de la profundidad en la\nque se mueven o de si son o no depredadores.</item>
+        <item>En general, los peces tienen una visión envidiable\nya que sus ojos están entrenados para ver bajo\nel agua, ver en la oscuridad y captar detalles a\ngrandes distancias.</item>
+        <item>Algunas especies acuáticas, incluso, tienen visión ultravioleta\n(una longitud de onda más corta que la visible para los seres\nhumanos), que les permite captar más información del\nambiente que les rodea y así aumentar su supervivencia.</item>
+        <item>Este mismo año, un grupo de científicos de la universidad alemana de Tubinga\ndescubrieron una nueva especie de pez, el R.Natalensi. En un primer momento\nse creyó que este pez tenía cuatro ojos,\npero la verdad es que sólo tiene dos ojos, aunque muy particulares.</item>
+        <item>Son dos ojos cilíndricos orientados hacia arriba, como los de muchos peces, que, con la poca\nluz que le llega de la superficie, le permiten ver a los depredadores y buscar alimento.\nAdemás, presenta un par de extensiones laterales que parecen otro par de ojos y que\nfuncionan como una especie de espejos para ver hacia abajo y a los lados y captar información\nde las profundidades marinas.</item>
+    </string-array>
+    <string-array name="unit">
+        <item>28pt.</item>
+        <item>24pt.</item>
+        <item>20pt.</item>
+        <item>18pt.</item>
+        <item>16pt.</item>
+        <item>14pt.</item>
+        <item>12pt.</item>
+        <item>10pt.</item>
+        <item>8pt.</item>
+    </string-array>
+    <string-array name="fontSize">
+        <item>50</item>
+        <item>43</item>
+        <item>36</item>
+        <item>32</item>
+        <item>29</item>
+        <item>25</item>
+        <item>21.5</item>
+        <item>18</item>
+        <item>14.5</item>
+    </string-array>
+     </resources>

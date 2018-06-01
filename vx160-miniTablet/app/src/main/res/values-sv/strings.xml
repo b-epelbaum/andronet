@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+  <string name="language_prefix">se</string>
+    <string-array name="nv_tablets_paragraphs">
+        <item>På en vacker\näng nära sjön</item>
+        <item>Den stilla brisen gav\nen lätt krusning på\nvattenytan</item>
+        <item>De små vågorna verkade\nfortsätta mil efter mil</item>
+        <item>Ute på ängen betade hjortar gräset\nsom vara täckt av dagg</item>
+        <item>Aldrig i mitt liv hade jag upplevt en så\nfantastisk morgon</item>
+        <item>Det var nästan inte ett moln på himlen.\nBara svaga stråk av vitt mot den fantastiska blå skyn</item>
+        <item>Ovanför träden cirklade fåglarna och sjöng den vackraste av\nnaturens melodier</item>
+        <item>Runt omkring mig hördes ljuden från naturen som vaknade till liv.\nDen vackra morgonen var överväldigande</item>
+        <item>Solen värmde mitt ansikte. Jag såg mig omkring och förundrades när dagen grydde</item>
+    </string-array>
+  <string-array name="unit">
+    <item>N36</item>
+    <item>N24</item>
+    <item>N18</item>
+    <item>N14</item>
+    <item>N12</item>
+    <item>N10</item>
+    <item>N8</item>
+    <item>N6</item>
+    <item>N5</item>
+  </string-array>
+
+    <string-array name="font_size">
+        <item>92</item>
+        <item>61</item>
+        <item>46</item>
+        <item>36</item>
+        <item>31</item>
+        <item>25</item>
+        <item>20</item>
+        <item>15</item>
+        <item>13</item>
+    </string-array>
+    </resources>
