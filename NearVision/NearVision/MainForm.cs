@@ -1,37 +1,115 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
+using System.Timers;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Script.Serialization;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using SimpleWebServer;
 
 namespace NearVision
 {
     public partial class MainForm : Form
     {
-        static int currentTextParagraph = 8;
-
+        private ConfigMgr _config;
+        private System.Timers.Timer _hideTimer;
+        private SettingDlg _settingsDlg;
+        private TextHandler _textHandler;
 
         public MainForm()
         {
             InitializeComponent();
-            WebServer ws = new WebServer(SendResponse, "http://localhost:8070/");
-            ws.Run();
-            //Console.WriteLine("A simple webserver. Press a key to quit.");
-            //Console.ReadKey();
-            //ws.Stop();
 
-            image.SizeMode = PictureBoxSizeMode.StretchImage;
+            _config = ConfigMgr.Init();
+            _textHandler = new TextHandler(_config);
+            _textHandler.updateTextBlockEvent += onUpdateTextBlock;
+
+            InitGUI();
+            InitMouseEvents();
+            InitWebServer();
+            InitStartText();
+
+        }
+
+     
+        private void InitGUI()
+        {
+            BringToFront();
+            TopMost = true;
+
+            _imageBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            ControlPanel.Visible = _browserBox.Visible = _imageBox.Visible =  false;
+            _textHeader.Visible = _textBox.Visible = true;
+            _hideTimer = new System.Timers.Timer();
+        }
+
+        private void InitMouseEvents()
+        {
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.on_MouseClick);
+            this._imageBox.MouseClick += new MouseEventHandler(this.on_MouseClick);
+            this._textBox.MouseClick += new MouseEventHandler(this.on_MouseClick);
+            this._textHeader.MouseClick += new MouseEventHandler(this.on_MouseClick);
+        }
+
+        private void InitWebServer()
+        {
+            string httpPreffix = _config.General.IsSSL ? "https://" : "http://";
+            WebServer ws = new WebServer(SendResponse, $"{httpPreffix}{_config.General.ServerIP}:{_config.General.Port}/");
+            ws.Run();
+        }
+
+        private void InitStartText ()
+        {
+            TextData td = _textHandler.getCurrentTextData();
+            if (td == null)
+                return;
+
+            UpdateTextBlock(td);
+        }
+
+        private void onUpdateTextBlock(TextData textData)
+        {
+            if (textData == null)
+                return;
+
+            UpdateTextBlock(textData);
+        }
+
+        private void UpdateTextBlock(TextData td )
+        {
+            _textBox.Font = new Font(_textBox.Font.FontFamily, (float)td.FontSize, GraphicsUnit.Pixel);
+            _textBox.Text = td.Text;
+            _textHeader.Text = td.UnitText;
+        }
+
+        private void on_MouseClick(object sender, EventArgs e)
+        {
+            if ( this.WindowState == FormWindowState.Normal )
+            {
+                return;
+            }
+
+            if (_hideTimer.Enabled )
+            {
+                _hideTimer.Stop();
+            }
+            ControlPanel.BringToFront();
+            ControlPanel.Visible = true;
+
+            _hideTimer.Elapsed += new ElapsedEventHandler(on_HideTimer);
+            _hideTimer.Interval = 5000;
+            _hideTimer.Enabled = true;
+        }
+
+        private void on_HideTimer(object sender, EventArgs e)
+        {
+            ControlPanel.Visible = false;
+            _hideTimer.Stop();
         }
 
         public string SendResponse(HttpListenerRequest request)
         {
+            var allRequet = request.ToString();
             String cmd = request.QueryString.Get("cmd");
             if (cmd != null)
             {
@@ -42,8 +120,8 @@ namespace NearVision
                 Invoke((MethodInvoker)delegate {
                     setWebPageByResponse(selectedTest.mTestId, res);
                 });
-               
-                return string.Format("<HTML><BODY>{0}</BODY></HTML>", res);
+
+                return res;
             }
             return string.Format("<HTML><BODY>cmd is not parsed</BODY></HTML>", DateTime.Now);
         }
@@ -62,79 +140,61 @@ namespace NearVision
             return selectedTest;
         }
 
-        public static String GenerateResponse(Constants.L40Cmd selectedTest)
+        public String GenerateResponse(Constants.L40Cmd selectedTest)
         {
-            long msec = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            long msec = (long)(DateTimeOffset.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds ;
             System.Collections.IDictionary dict = new Dictionary<string, string>();
 
             dict["test"] = selectedTest.mTestId.ToString();
             dict["cmd"] = selectedTest.mCmd;
             dict["ptime"] = msec.ToString();
+            dict["lang"] = _config.CurrentLangID;
 
             switch (selectedTest.mTestId) {
                 case 500:
                 case 501:
                     break;
                 case 502:
-                    dict["textOne"] = Constants.Paragraphs[currentTextParagraph];
-                    dict["ac1"] = Constants.Unit[currentTextParagraph];
+                    TextData td = _textHandler.getCurrentTextData();
+                    dict["textOne"] = td.Text;
+                    dict["ac1"] = td.UnitText;
                     break;
                 case 503:
-                    if (currentTextParagraph < 8)
-                        currentTextParagraph++;
-                    dict["textOne"] = Constants.Paragraphs[currentTextParagraph];
-                    dict["ac1"] = Constants.Unit[currentTextParagraph];
+                    TextData tdNext = _textHandler.next();
+                    dict["textOne"] = tdNext.Text;
+                    dict["ac1"] = tdNext.UnitText;
                     break;
                 case 504:
-                    if (currentTextParagraph > 0)
-                        currentTextParagraph--;
-                    dict["textOne"] = Constants.Paragraphs[currentTextParagraph];
-                    dict["ac1"] = Constants.Unit[currentTextParagraph];
+                    TextData tdPrev = _textHandler.previous();
+                    dict["textOne"] = tdPrev.Text;
+                    dict["ac1"] = tdPrev.UnitText;
                     break;
             }
-
-            //dict["lang"] = sRes.getLangCode();
-
-
-            return new JavaScriptSerializer().Serialize(dict);
+            return JsonConvert.SerializeObject(dict, Formatting.None);
         }
 
   
         public void setWebPageByResponse(int testId, String response)
         {
             String html = "";
-            
             switch (testId)
             {
                 case 501:
                     html = HtmlHelper.generateHtmlPage(response);
-                    webBrowser.DocumentText = html;
+                    _browserBox.DocumentText = html;
 
-                    webBrowser.Visible = true;
-                    image.Visible = false;
-                    header.Visible = false;
-                    text.Visible = false;
-
+                    _browserBox.Visible = true;
+                    _imageBox.Visible = _textHeader.Visible = _textBox.Visible = false;
                     ShowImage("nv_fixation_target.png");
-                    //gifImageView.setVisibility(View.GONE);
-                    //phoriaView.setVisibility(View.GONE);
                     break;
 
                 case 502:
                 case 503:
                 case 504:
-
-                    text.Width = text.Parent.Width;
-                    //text.Location = new Point(0, text.Location.Y);
-                    //text.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-
-                    text.Font= new Font(text.Font.FontFamily, Constants.FontSize[currentTextParagraph], GraphicsUnit.Pixel);
-                    text.Text = Constants.Paragraphs[currentTextParagraph];
-                    header.Text = Constants.Unit[currentTextParagraph];
-                    webBrowser.Visible = false;
-                    image.Visible = false;
-                    header.Visible = true;
-                    text.Visible = true;
+                    _textBox.Width = _textBox.Parent.Width;
+                    UpdateTextBlock(_textHandler.getCurrentTextData());
+                    _browserBox.Visible = _imageBox.Visible = false;
+                    _textHeader.Visible = _textBox.Visible = true;
                     break;
 
                 case 505: // - Jackson cross (to adjust the addition)
@@ -219,14 +279,50 @@ namespace NearVision
 
         private void ShowImage(String name)
         {
-            image.Image = Image.FromFile("./Resources/nv_images/" + name);
-            webBrowser.Visible = false;
-            image.Visible = true;
-            header.Visible = false;
-            text.Visible = false;
+            Image bm = Bitmap.FromFile("./Resources/nv_images/" + name);
+
+            _imageBox.Image = Image.FromFile("./Resources/nv_images/" + name);
+            _textBox.Visible = _textHeader.Visible = _browserBox.Visible = false;
+            _imageBox.Visible = true;
         }
 
-        private void header_Click(object sender, EventArgs e)
+        private void ZoomButton_Click(object sender, EventArgs e)
+        {
+            if ( this.WindowState == FormWindowState.Maximized )
+            {
+                this.WindowState = FormWindowState.Normal;
+                ZoomButton.Image = Properties.Resources.windowed;
+                this.Location = new Point(10, 10);
+                this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Size.Width - 20, Screen.PrimaryScreen.WorkingArea.Size.Height - 20);
+                this.FormBorderStyle = FormBorderStyle.FixedSingle;
+                this.MaximizeBox = this.MinimizeBox = TopMost = false;
+
+                ControlPanel.BringToFront();
+                ControlPanel.Visible = true;
+
+            }
+            else
+            {
+                ControlPanel.Visible = false;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.WindowState = FormWindowState.Maximized;
+                ZoomButton.Image = Properties.Resources.full_screen_icon_11769;
+                TopMost = true;
+            }
+        }
+
+        private void SettingButton_Click(object sender, EventArgs e)
+        {
+            _settingsDlg = new SettingDlg (_config)
+            {
+                StartPosition = FormStartPosition.CenterScreen,
+                TopMost = true
+            };
+
+            _settingsDlg.ShowDialog();
+        }
+
+        private void MainForm_MouseMove(object sender, MouseEventArgs e)
         {
 
         }
