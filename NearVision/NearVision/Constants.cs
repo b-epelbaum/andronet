@@ -121,42 +121,6 @@ namespace NearVision
                 mLargeName  = largeName;
             }
         };
-
-        public static readonly string[] Paragraphs = {
-                   "The sun warmed my face as I gazed about in wonder and awe at the day unfolding before me.",
-        "All around me the sound of nature was alive and new.\r\nThe beauty of this morning overwhelmed me.",
-        "Above the trees, the birds circled in flight, calling out to one\r\nanother in the sweetest of nature’s melodies",
-        "The sky had the slightest of clouds, a subtle streak\r\nof white here and there against the magnificent\r\nexpanse of blue",
-        "Never had there been such a marvellous\r\nmorning in all my life",
-        "Out across the meadow there were deer\r\ngrazing on the grass which was\r\ncovered in the morning dew",
-        "The tiny waves seemed to go on\r\nfor miles and miles",
-        "The soft breeze made\r\nsmall impressions on the\r\nsurface of the water",
- "In a beautiful\r\nmeadow near\r\nthe lake"
-        };
-
-        public static readonly string[] Unit = {
-                       "N5",
-            "N6",
-            "N8",
-            "N10",
-            "N12",
-            "N14",
-            "N18",
-            "N24",
-"N36",
-        };
-
-        public static readonly int[] FontSize = {
-                          13,
-        15,
-        20,
-        25,
-        31,
-        36,
-        46,
-        61,
- 92,
-        };
     }
 
 }
