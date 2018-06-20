@@ -133,7 +133,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NearVision Client";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.ControlPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._imageBox)).EndInit();
             this.ResumeLayout(false);

@@ -19,7 +19,7 @@ namespace NearVision
             InitializeComponent();
 
             _config = config;
-            langBox.Items.AddRange(config.getLangNames().ToArray());
+            langBox.Items.AddRange(config.GetLangNames().ToArray());
             langBox.SelectedItem = config.CurrentLangName;
 
             this.langBox.SelectedIndexChanged +=

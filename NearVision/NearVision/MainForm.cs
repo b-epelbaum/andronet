@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Timers;
 using System.Net;
 using System.Windows.Forms;
@@ -11,10 +12,10 @@ namespace NearVision
 {
     public partial class MainForm : Form
     {
-        private ConfigMgr _config;
+        private readonly ConfigMgr _config;
         private System.Timers.Timer _hideTimer;
         private SettingDlg _settingsDlg;
-        private TextHandler _textHandler;
+        private readonly TextHandler _textHandler;
 
         public MainForm()
         {
@@ -22,7 +23,7 @@ namespace NearVision
 
             _config = ConfigMgr.Init();
             _textHandler = new TextHandler(_config);
-            _textHandler.updateTextBlockEvent += onUpdateTextBlock;
+            _textHandler.updateTextBlockEvent += OnUpdateTextBlock;
 
             InitGUI();
             InitMouseEvents();
@@ -45,29 +46,29 @@ namespace NearVision
 
         private void InitMouseEvents()
         {
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.on_MouseClick);
-            this._imageBox.MouseClick += new MouseEventHandler(this.on_MouseClick);
-            this._textBox.MouseClick += new MouseEventHandler(this.on_MouseClick);
-            this._textHeader.MouseClick += new MouseEventHandler(this.on_MouseClick);
+            this.MouseClick += this.OnMouseClick;
+            this._imageBox.MouseClick += this.OnMouseClick;
+            this._textBox.MouseClick += this.OnMouseClick;
+            this._textHeader.MouseClick += this.OnMouseClick;
         }
 
         private void InitWebServer()
         {
-            string httpPreffix = _config.General.IsSSL ? "https://" : "http://";
-            WebServer ws = new WebServer(SendResponse, $"{httpPreffix}{_config.General.ServerIP}:{_config.General.Port}/");
+            var httpPreffix = _config.General.IsSSL ? "https://" : "http://";
+            var ws = new WebServer(SendResponse, $"{httpPreffix}{_config.General.ServerIP}:{_config.General.Port}/");
             ws.Run();
         }
 
         private void InitStartText ()
         {
-            TextData td = _textHandler.getCurrentTextData();
+            var td = _textHandler.getCurrentTextData();
             if (td == null)
                 return;
 
             UpdateTextBlock(td);
         }
 
-        private void onUpdateTextBlock(TextData textData)
+        private void OnUpdateTextBlock(TextData textData)
         {
             if (textData == null)
                 return;
@@ -82,7 +83,7 @@ namespace NearVision
             _textHeader.Text = td.UnitText;
         }
 
-        private void on_MouseClick(object sender, EventArgs e)
+        private void OnMouseClick(object sender, EventArgs e)
         {
             if ( this.WindowState == FormWindowState.Normal )
             {
@@ -96,12 +97,12 @@ namespace NearVision
             ControlPanel.BringToFront();
             ControlPanel.Visible = true;
 
-            _hideTimer.Elapsed += new ElapsedEventHandler(on_HideTimer);
+            _hideTimer.Elapsed += OnHideTimer;
             _hideTimer.Interval = 5000;
             _hideTimer.Enabled = true;
         }
 
-        private void on_HideTimer(object sender, EventArgs e)
+        private void OnHideTimer(object sender, EventArgs e)
         {
             ControlPanel.Visible = false;
             _hideTimer.Stop();
@@ -110,62 +111,51 @@ namespace NearVision
         public string SendResponse(HttpListenerRequest request)
         {
             var allRequet = request.ToString();
-            String cmd = request.QueryString.Get("cmd");
-            if (cmd != null)
-            {
-                Constants.L40Cmd selectedTest = getSelectedTest(cmd);
-                if (selectedTest == null)
-                    return string.Format("<HTML><BODY>test is null</BODY></HTML>", DateTime.Now);
-                String res = GenerateResponse(selectedTest);
-                Invoke((MethodInvoker)delegate {
-                    setWebPageByResponse(selectedTest.mTestId, res);
-                });
+            var cmd = request.QueryString.Get("cmd");
+            if (cmd == null) return string.Format("<HTML><BODY>cmd is not parsed</BODY></HTML>", DateTime.Now);
+            var selectedTest = GetSelectedTest(cmd);
+            if (selectedTest == null)
+                return string.Format("<HTML><BODY>test is null</BODY></HTML>", DateTime.Now);
+            var res = GenerateResponse(selectedTest);
+            Invoke((MethodInvoker)delegate {
+                SetWebPageByResponse(selectedTest.mTestId, res);
+            });
 
-                return res;
-            }
-            return string.Format("<HTML><BODY>cmd is not parsed</BODY></HTML>", DateTime.Now);
+            return res;
         }
 
-        private static Constants.L40Cmd getSelectedTest(String cmdCommand)
+        private static Constants.L40Cmd GetSelectedTest(string cmdCommand)
         {
-            Constants.L40Cmd selectedTest = null;
-            foreach (Constants.L40Cmd test in Constants.L40Cmd.Values)
-            {
-                if (test.mCmd.Equals(cmdCommand))
-                {
-                    selectedTest = test;
-                    break;
-                }
-            }
-            return selectedTest;
+            return Constants.L40Cmd.Values.FirstOrDefault(test => test.mCmd.Equals(cmdCommand));
         }
 
         public String GenerateResponse(Constants.L40Cmd selectedTest)
         {
-            long msec = (long)(DateTimeOffset.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds ;
-            System.Collections.IDictionary dict = new Dictionary<string, string>();
-
-            dict["test"] = selectedTest.mTestId.ToString();
-            dict["cmd"] = selectedTest.mCmd;
-            dict["ptime"] = msec.ToString();
-            dict["lang"] = _config.CurrentLangID;
+            var msec = (long)(DateTimeOffset.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds ;
+            System.Collections.IDictionary dict = new Dictionary<string, string>
+            {
+                ["test"] = selectedTest.mTestId.ToString(),
+                ["cmd"] = selectedTest.mCmd,
+                ["ptime"] = msec.ToString(),
+                ["lang"] = _config.CurrentLangId
+            };
 
             switch (selectedTest.mTestId) {
                 case 500:
                 case 501:
                     break;
                 case 502:
-                    TextData td = _textHandler.getCurrentTextData();
+                    var td = _textHandler.getCurrentTextData();
                     dict["textOne"] = td.Text;
                     dict["ac1"] = td.UnitText;
                     break;
                 case 503:
-                    TextData tdNext = _textHandler.next();
+                    var tdNext = _textHandler.next();
                     dict["textOne"] = tdNext.Text;
                     dict["ac1"] = tdNext.UnitText;
                     break;
                 case 504:
-                    TextData tdPrev = _textHandler.previous();
+                    var tdPrev = _textHandler.previous();
                     dict["textOne"] = tdPrev.Text;
                     dict["ac1"] = tdPrev.UnitText;
                     break;
@@ -174,13 +164,12 @@ namespace NearVision
         }
 
   
-        public void setWebPageByResponse(int testId, String response)
+        public void SetWebPageByResponse(int testId, String response)
         {
-            String html = "";
             switch (testId)
             {
                 case 501:
-                    html = HtmlHelper.generateHtmlPage(response);
+                    var html = HtmlHelper.generateHtmlPage(response);
                     _browserBox.DocumentText = html;
 
                     _browserBox.Visible = true;
@@ -320,11 +309,6 @@ namespace NearVision
             };
 
             _settingsDlg.ShowDialog();
-        }
-
-        private void MainForm_MouseMove(object sender, MouseEventArgs e)
-        {
-
         }
     }
 }

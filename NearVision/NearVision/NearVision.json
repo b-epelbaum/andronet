@@ -6,11 +6,215 @@
 		"IsSSL" : false
 	},
 	
+	"CmdType" : 
+	[
+		"VISUAL_ACUITY",        
+        "SPECIAL_TEST_NC",      
+        "SPECIAL_TEST_ITYN",    
+        "SPECIAL_TEST_ETDRS",   
+        "SPECIAL_TEST_PIC",     
+        "SPECIAL_TEST_IC",      
+        "SPECIAL_TEST_ISH",     
+        "SPECIAL_TEST_WOR",     
+        "SPECIAL_FUNCTION",     
+        "NV_TEST",
+        "JACKSON_CROSS",
+        "RED_AND_GREEN", 
+		"AMSLER_GRID",
+        "CLOCK_ASTIGMATISM",
+        "NUMBER_IN_HORIZONTAL_LINE",
+        "NUMBER_IN_VERTICAL_LINE",
+        "FIXATION_DISPARITY",
+        "STEREO_ACUITY",
+        "WORTH",
+        "WESSON",
+        "SCHOBER",
+        "FIXATION_POINT",
+        "CROSS_PHORIA",
+        "OXO_HORIZONTAL",
+        "OXO_VERTICAL",
+        "BROWSER",
+        "METRO",
+        "RIGHT",
+        "LEFT"
+	],
+	
+	"Commands" :
+	[
+		{
+			"ID" : 500,
+			"Cmd" : "QUICK_NV",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 501,
+			"Cmd" : "NV_FIX",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 502,
+			"Cmd" : "NV_TEXT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 503,
+			"Cmd" : "NV_SCROLL_UP",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 504,
+			"Cmd" : "NV_SCROLL_DOWN",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 505,
+			"Cmd" : "NV_JACKSON_CROSS",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 506,
+			"Cmd" : "NV_RED_AND_GREEN",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 507,
+			"Cmd" : "NV_AMSLER_GRID",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 508,
+			"Cmd" : "NV_CLOCK_ASTIGMATISM",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 509,
+			"Cmd" : "NV_NUMBER_IN_HORIZONTAL_LINE",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 510,
+			"Cmd" : "NV_FIXATION_DISPARITY",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 511,
+			"Cmd" : "NV_STEREO_ACUITY",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 512,
+			"Cmd" : "NV_WORTH",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 513,
+			"Cmd" : "NV_NUMBER_IN_VERTICAL_LINE",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 514,
+			"Cmd" : "NV_WESSON",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 515,
+			"Cmd" : "NV_SCHOBER",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 516,
+			"Cmd" : "NV_FIXATION_POINT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 517,
+			"Cmd" : "NV_CROSS_PHORIA",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 518,
+			"Cmd" : "NV_OXO_HORIZONTAL",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 519,
+			"Cmd" : "NV_OXO_VERTICAL",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 520,
+			"Cmd" : "NV_BROWSER",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 521,
+			"Cmd" : "NV_METRO",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 522,
+			"Cmd" : "NV_RIGHT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		}.
+		{
+			"ID" : 523,
+			"Cmd" : "NV_LEFT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		}
+	],
 	
 	"TextTestData" :
 	[
 		{
-			"LangID" : "en",
+			"LangId" : "en",
 			"LangName" : "English (US)",
 			"BlockArray" :
 			[
@@ -62,7 +266,7 @@
 			]
 		},
 		{
-			"LangID" : "fr",
+			"LangId" : "fr",
 			"LangName" : "Français",
 			"BlockArray" :
 			[
@@ -114,7 +318,7 @@
 			]
 		},
 		{
-			"LangID" : "es",
+			"LangId" : "es",
 			"LangName" : "Español",
 			"BlockArray" :
 			[
@@ -166,7 +370,7 @@
 			]
 		},
 		{
-			"LangID" : "it",
+			"LangId" : "it",
 			"LangName" : "Italiano",
 			"BlockArray" :
 			[
@@ -218,7 +422,7 @@
 			]
 		},
 		{
-			"LangID" : "de",
+			"LangId" : "de",
 			"LangName" : "Deutsch",
 			"BlockArray" :
 			[
@@ -270,7 +474,7 @@
 			]
 		},
 		{
-			"LangID" : "sv",
+			"LangId" : "sv",
 			"LangName" : "Svenska",
 			"BlockArray" :
 			[
@@ -322,7 +526,7 @@
 			]
 		},
 		{
-			"LangID" : "de_LU",
+			"LangId" : "de_LU",
 			"LangName" : "Deutsch (LU)",
 			"BlockArray" :
 			[
@@ -374,7 +578,7 @@
 			]
 		},
 		{
-			"LangID" : "en_GB",
+			"LangId" : "en_GB",
 			"LangName" : "English (UK)",
 			"BlockArray" :
 			[

@@ -30,8 +30,8 @@ namespace NearVision
         public TextHandler(ConfigMgr config )
         {
             _config = config;
-            _config.languageChangedEvent += onLanguageChangedEvent;
-            initTextBlocks(_config.CurrentLangID);
+            _config.LanguageChangedEvent += onLanguageChangedEvent;
+            initTextBlocks(_config.CurrentLangId);
             _textIndex = _currentBlockArrayList.Count - 1;
         }
 
@@ -43,7 +43,7 @@ namespace NearVision
 
         private void initTextBlocks ( string langID )
         {
-            _currentBlockArrayList = _config.getBlocks(_config.CurrentLangID);
+            _currentBlockArrayList = _config.GetBlocks(_config.CurrentLangId);
         }
 
         public TextData getCurrentTextData ()

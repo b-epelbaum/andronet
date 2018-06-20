@@ -16,6 +16,16 @@ namespace NearVision
         public bool IsSSL { get; set; }
     }
 
+    public class Command
+    {
+        public int ID { get; set; }
+        public string Cmd { get; set; }
+        public string Type { get; set; }
+        public string Name { get; set; }
+        public string Media { get; set; }
+    }
+
+
     public class BlockArray
     {
         public double FontSize { get; set; }
@@ -25,7 +35,7 @@ namespace NearVision
 
     public class TextTestData
     {
-        public string LangID { get; set; }
+        public string LangId { get; set; }
         public string LangName { get; set; }
         public List<BlockArray> BlockArray { get; set; }
     }
@@ -33,58 +43,57 @@ namespace NearVision
     public class RootObject
     {
         public General General { get; set; }
+        public List<string> CmdType { get; set; }
+        public List<Command> Commands { get; set; }
         public List<TextTestData> TextTestData { get; set; }
     }
 
     public class ConfigMgr
     {
-        public delegate void LanguageChanged( string langID );
+        public delegate void LanguageChanged( string langId );
 
         //declare event of type delegate
-        public event LanguageChanged languageChangedEvent;
+        public event LanguageChanged LanguageChangedEvent;
 
         public ConfigMgr(RootObject rootObj)
         {
-            _rootObject = rootObj;
-            _general = _rootObject.General;
+            RootObject = rootObj;
+            General = RootObject.General;
         }
 
         public static ConfigMgr Init()
         {
-            ConfigMgr retVal =  new ConfigMgr(JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(@"./NearVision.json")));
+            var retVal =  new ConfigMgr(JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(@"./NearVision.json")));
             retVal.InitLangIDs();
             return retVal;
         }
 
-        public General General
+        public General General { get; }
+
+        public List<string> GetLangIDs ()
         {
-            get => _general;
+            return RootObject.TextTestData.Select(l => l.LangId).ToList();
         }
 
-        public List<String> getLangIDs ()
+        public List<string> GetLangNames()
         {
-            return _rootObject.TextTestData.Select(l => l.LangID).ToList();
+            return RootObject.TextTestData.Select(l => l.LangName).ToList();
         }
 
-        public List<String> getLangNames()
+        public List<BlockArray> GetBlocks ( string langId )
         {
-            return _rootObject.TextTestData.Select(l => l.LangName).ToList();
+            return RootObject.TextTestData.Where(l => l.LangId == langId).Select(g => g.BlockArray).SingleOrDefault();
         }
 
-        public List<BlockArray> getBlocks ( string langID )
-        {
-            return _rootObject.TextTestData.Where(l => l.LangID == langID).Select(g => g.BlockArray).SingleOrDefault();
-        }
+       private RootObject RootObject { get; set; }
 
-       private RootObject _rootObject { get; set; }
-
-        public string CurrentLangID {
-            get => _currentLangID;
+        public string CurrentLangId {
+            get => _currentLangId;
             set  {
-                _currentLangID = value;
-                Properties.Settings.Default.LanguageID = _currentLangID;
+                _currentLangId = value;
+                Properties.Settings.Default.LanguageID = _currentLangId;
                 Properties.Settings.Default.Save();
-                languageChangedEvent?.Invoke(_currentLangID);
+                LanguageChangedEvent?.Invoke(_currentLangId);
             }
         }
         public string CurrentLangName
@@ -93,18 +102,17 @@ namespace NearVision
             set
             {
                 _currentLangName = value;
-                CurrentLangID = _rootObject.TextTestData.Where(l => l.LangName == value).Select(g => g.LangID).Single();
+                CurrentLangId = RootObject.TextTestData.Where(l => l.LangName == value).Select(g => g.LangId).Single();
             }
         }
 
         private void InitLangIDs ()
         {
-            _currentLangID = Properties.Settings.Default.LanguageID;
-            _currentLangName = _rootObject.TextTestData.Where(l => l.LangID == CurrentLangID).Select(g => g.LangName).Single();
+            _currentLangId = Properties.Settings.Default.LanguageID;
+            _currentLangName = RootObject.TextTestData.Where(l => l.LangId == CurrentLangId).Select(g => g.LangName).Single();
         }
 
-        private General _general;
-        private string _currentLangID;
+        private string _currentLangId;
         private string _currentLangName;
     }
 }
