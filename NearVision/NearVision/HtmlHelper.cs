@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Script.Serialization;
-using static NearVision.Constants;
 
 namespace NearVision
 {
@@ -48,7 +43,7 @@ namespace NearVision
                 if (dict.Contains("test")) int.TryParse((string)dict["test"], out test);
                 if (dict.Contains("lang")) lang = (string)dict["lang"];
 
-                if (test == L40Cmd.NV_FIXATION_TEST.mTestId)
+                if (test == 516)
                 {
                     html = "<html>";
                     html += "<style>";
@@ -70,7 +65,7 @@ namespace NearVision
                     html += "</body>";
                     html += "</html>";
                 }
-                else if (test == L40Cmd.NV_TEXT_TEST.mTestId)
+                else if (test == 502)
                 {
                     //Languages currentLang = Consts.Languages.getLangugesByLangPrefix(lang);
 

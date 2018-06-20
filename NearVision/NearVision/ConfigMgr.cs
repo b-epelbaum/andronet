@@ -65,6 +65,9 @@ namespace NearVision
         {
             var retVal =  new ConfigMgr(JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(@"./NearVision.json")));
             retVal.InitLangIDs();
+            retVal.InitCommandMap();
+
+            retVal._brightness = Properties.Settings.Default.BrightnessCoeff;
             return retVal;
         }
 
@@ -96,6 +99,18 @@ namespace NearVision
                 LanguageChangedEvent?.Invoke(_currentLangId);
             }
         }
+
+        public int Brightness
+        {
+            get => _brightness;
+            set
+            {
+                _brightness = value;
+                Properties.Settings.Default.BrightnessCoeff = _brightness;
+                Properties.Settings.Default.Save();
+            }
+        }
+
         public string CurrentLangName
         {
             get => _currentLangName;
@@ -106,13 +121,34 @@ namespace NearVision
             }
         }
 
+        public Command GetCommandById(int CmdId)
+        {
+            return _commandIdMap[CmdId];
+        }
+
+        public Command GetCommandByName(string CmdName)
+        {
+            return _commandNameMap[CmdName];
+        }
+
         private void InitLangIDs ()
         {
             _currentLangId = Properties.Settings.Default.LanguageID;
             _currentLangName = RootObject.TextTestData.Where(l => l.LangId == CurrentLangId).Select(g => g.LangName).Single();
         }
 
+        private void InitCommandMap()
+        {
+            _commandIdMap = RootObject.Commands.ToDictionary(x => x.ID);
+            _commandNameMap = RootObject.Commands.ToDictionary(x => x.Cmd);
+        }
+
+       
+
+        private int _brightness;
         private string _currentLangId;
         private string _currentLangName;
+        private Dictionary<int, Command> _commandIdMap;
+        private Dictionary<string, Command> _commandNameMap;
     }
 }
