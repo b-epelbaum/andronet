@@ -1,0 +1,633 @@
+{
+	"General" :
+	{
+		"ServerIP" : "192.168.42.6",
+		"Port" : 8070,
+		"IsSSL" : false
+	},
+	
+	"CmdType" : 
+	[
+		"VISUAL_ACUITY",        
+        "SPECIAL_TEST_NC",      
+        "SPECIAL_TEST_ITYN",    
+        "SPECIAL_TEST_ETDRS",   
+        "SPECIAL_TEST_PIC",     
+        "SPECIAL_TEST_IC",      
+        "SPECIAL_TEST_ISH",     
+        "SPECIAL_TEST_WOR",     
+        "SPECIAL_FUNCTION",     
+        "NV_TEST",
+        "JACKSON_CROSS",
+        "RED_AND_GREEN", 
+		"AMSLER_GRID",
+        "CLOCK_ASTIGMATISM",
+        "NUMBER_IN_HORIZONTAL_LINE",
+        "NUMBER_IN_VERTICAL_LINE",
+        "FIXATION_DISPARITY",
+        "STEREO_ACUITY",
+        "WORTH",
+        "WESSON",
+        "SCHOBER",
+        "FIXATION_POINT",
+        "CROSS_PHORIA",
+        "OXO_HORIZONTAL",
+        "OXO_VERTICAL",
+        "BROWSER",
+        "METRO",
+        "RIGHT",
+        "LEFT"
+	],
+	
+	"Commands" :
+	[
+		{
+			"ID" : 500,
+			"Cmd" : "QUICK_NV",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 501,
+			"Cmd" : "NV_FIX",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 502,
+			"Cmd" : "NV_TEXT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 503,
+			"Cmd" : "NV_SCROLL_UP",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 504,
+			"Cmd" : "NV_SCROLL_DOWN",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 505,
+			"Cmd" : "NV_JACKSON_CROSS",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 506,
+			"Cmd" : "NV_RED_AND_GREEN",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 507,
+			"Cmd" : "NV_AMSLER_GRID",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 508,
+			"Cmd" : "NV_CLOCK_ASTIGMATISM",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 509,
+			"Cmd" : "NV_NUMBER_IN_HORIZONTAL_LINE",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 510,
+			"Cmd" : "NV_FIXATION_DISPARITY",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 511,
+			"Cmd" : "NV_STEREO_ACUITY",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 512,
+			"Cmd" : "NV_WORTH",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 513,
+			"Cmd" : "NV_NUMBER_IN_VERTICAL_LINE",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 514,
+			"Cmd" : "NV_WESSON",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 515,
+			"Cmd" : "NV_SCHOBER",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 516,
+			"Cmd" : "NV_FIXATION_POINT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 517,
+			"Cmd" : "NV_CROSS_PHORIA",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 518,
+			"Cmd" : "NV_OXO_HORIZONTAL",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 519,
+			"Cmd" : "NV_OXO_VERTICAL",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 520,
+			"Cmd" : "NV_BROWSER",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 521,
+			"Cmd" : "NV_METRO",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		},
+		{
+			"ID" : 522,
+			"Cmd" : "NV_RIGHT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		}.
+		{
+			"ID" : 523,
+			"Cmd" : "NV_LEFT",
+			"Type" :  "NV_TEST",
+			"Name" :  "near_vision_image",
+			"Media" :  ""
+		}
+	],
+	
+	"TextTestData" :
+	[
+		{
+			"LangId" : "en",
+			"LangName" : "English (US)",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 13,
+					"ArrayUnit" : "8 pt.",
+					"Paragraph" : "The sun warmed my face as I gazed about in wonder and awe at the day unfolding before me."
+				},
+				{
+					"FontSize" : 15,
+					"ArrayUnit" : "10 pt.",
+					"Paragraph" : "All around me the sound of nature was alive and new.\nThe beauty of this morning overwhelmed me."
+				},
+				{
+					"FontSize" : 12,
+					"ArrayUnit" : "12 pt.",
+					"Paragraph" : "Above the trees, the birds circled in flight, calling out to one\nanother in the sweetest of nature’s melodies"
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "14 pt.",
+					"Paragraph" : "The sky had the slightest of clouds, a subtle streak\nof white here and there against the magnificent\nexpanse of blue"
+				},
+				{
+					"FontSize" : 31,
+					"ArrayUnit" : "16 pt.",
+					"Paragraph" : "Never had there been such a marvellous\nmorning in all my life"
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "18 pt.",
+					"Paragraph" : "Out across the meadow there were deer\ngrazing on the grass which was\ncovered in the morning dew"
+				},
+				{
+					"FontSize" : 46,
+					"ArrayUnit" : "20 pt.",
+					"Paragraph" : "The tiny waves seemed to go on\nfor miles and miles"
+				},
+				{
+					"FontSize" : 61,
+					"ArrayUnit" : "24 pt.",
+					"Paragraph" : "The soft breeze made\nsmall impressions on the\nsurface of the water"
+				},
+				{
+					"FontSize" : 92,
+					"ArrayUnit" : "28 pt.",
+					"Paragraph" : "In a beautiful\nmeadow near\nthe lake"
+				}
+			]
+		},
+		{
+			"LangId" : "fr",
+			"LangName" : "Français",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 10,
+					"ArrayUnit" : "1.5     (0,75)",
+					"Paragraph" : "Les agneaux, les tout petits, ceux qui sont nés dans le voyage et n’ont jamais vu la ferme, regardent autour d’eux avec étonnement.\nMais le plus touchant encore, ce sont les chiens, ces braves chiens de berger, tout affairés après leurs bêtes et ne voyant qu’elles dans le mas. Le chien de garde a beau\nles appeler du fond de sa niche : le seau du puits, tout plein d’eau fraîche, a beau leur faire signe : ils ne veulent rien voir, rien entendre, avant que le bétail soit rentré,\nle gros loquet poussé sur la petite porte à claire-voie, et les bergers attablés dans la salle basse. Alors seulement ils consentent à gagner le chenil, et là, tout en lapant\nleur écuellée de soupe, ils racontent à leurs camarades de la ferme ce qu’ils ont fait là-haut dans la montagne, un pays noir où il y a des loups et de grandes digitales\nde pourpre pleines de rosée jusqu’au bord."
+				},
+				{
+					"FontSize" : 14.7,
+					"ArrayUnit" : "2       (0,51)",
+					"Paragraph" : "Tout cela défile devant nous joyeusement et s’engouffre sous le portail, en piétinant avec un bruit d’averse... Il faut voir quel\némoi dans la maison. Du haut de leur perchoir, les gros paons vert et or, à crête de tulle, ont reconnu les arrivants et les\naccueillent par un formidable coup de trompette. Le poulailler, qui s’endormait, se réveille en sursaut. Tout le monde est sur\npied : pigeons, canards, dindons, pintades. La basse-cour est comme folle ; les poulets parlent de passer la nuit !... On dirait\nque chaque mouton a rapporté dans sa laine, avec un parfum d’Alpe sauvage, un peu de cet air vif des montagnes qui grise\net qui fait danser. C’est au milieu de tout ce train que le troupeau gagne son gîte. Rien de charmant comme cette installation.\nLes vieux béliers s’attendrissent en revoyant leur crèche."
+				},
+				{
+					"FontSize" : 20.3,
+					"ArrayUnit" : "3       (0,37)",
+					"Paragraph" : "D’heure en heure on se disait : « Maintenant, ils sont à Eyguières, maintenant au Paradou. »\nPuis, tout à coup, vers le soir, un grand cri : « Les voilà ! » et là-bas, au lointain, nous voyons\nle troupeau s’avancer dans une gloire de poussière. Toute la route semble marcher avec lui...\nLes vieux béliers viennent d’abord, la corne en avant, l’air sauvage ; derrière eux le gros des\nmoutons, les mères un peu lasses, leurs nourrissons dans les pattes ; – les mules à pompons\nrouges portant dans des paniers les agnelets d’un jour qu’elles bercent en marchant ; puis les\nchiens tout suants, avec des langues jusqu’à terre, et deux grands coquins de bergers drapés\ndans des manteaux de cadis roux qui leur tombent sur les talons comme des chapes."
+				},
+				{
+					"FontSize" : 23.4,
+					"ArrayUnit" : "4       (0,32)",
+					"Paragraph" : "Bêtes et gens passent cinq ou six mois là-haut, logés à la belle étoile, dans l’herbe\njusqu’au ventre ; puis, au premier frisson de l’automne, on redescend au mas,\net l’on revient brouter bourgeoisement les petites collines grises que parfume le romarin...\nDonc hier soir les troupeaux rentraient. Depuis le matin, le portail attendait,\nouvert à deux battants ; les bergeries étaient pleines de paille fraîche."
+				},
+				{
+					"FontSize" : 27.8,
+					"ArrayUnit" : "5       (0,27)",
+					"Paragraph" : "Tenez ! pas plus tard qu’hier soir, j’ai assisté à la rentrée des\ntroupeaux dans un mas (une ferme) qui est au bas de la côte,\net je vous jure que je ne donnerais pas ce spectacle pour toutes\nles premières que vous avez eues à Paris cette semaine.\nJugez plutôt. Il faut vous dire qu’en Provence, c’est l’usage,\nquand viennent les chaleurs, d’envoyer le bétail dans les Alpes. "
+				},
+				{
+					"FontSize" : 31.3,
+					"ArrayUnit" : "6       (0,24)",
+					"Paragraph" : "Je suis si bien dans mon moulin ! C’est si bien le coin que je\ncherchais, un petit coin parfumé et chaud, à mille lieues\ndes journaux, des fiacres, du brouillard !... Et que de jolies\nchoses autour de moi ! Il y a à peine huit jours que je suis\ninstallé, j’ai déjà la tête bourrée d’impressions et de souvenirs... "
+				},
+				{
+					"FontSize" : 41.7,
+					"ArrayUnit" : "8       (0,18)",
+					"Paragraph" : "Pas de bruit... À peine, de loin en loin, un son de\nfifre, un courlis dans les lavandes, un grelot de\nmules sur la route... Tout ce beau paysage\nprovençal ne vit que par la lumière. Et\nmaintenant, comment voulez-vous que je le\nregrette, votre Paris bruyant et noir ?"
+				},
+				{
+					"FontSize" : 50,
+					"ArrayUnit" : "10      (0,15)",
+					"Paragraph" : "Un joli bois de pins tout étincelant de\nlumière dégringole devant moi jusqu’au\nbas de la côte. À l’horizon, les Alpilles\ndécoupent leurs crêtes fines... "
+				},
+				{
+					"FontSize" : 75,
+					"ArrayUnit" : "14      (0,1)",
+					"Paragraph" : "C’est de là que je vous\nécris, ma porte grande\nouverte, au bon soleil"
+				}
+			]
+		},
+		{
+			"LangId" : "es",
+			"LangName" : "Español",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 14.5,
+					"ArrayUnit" : "8 pt.",
+					"Paragraph" : "Son dos ojos cilíndricos orientados hacia arriba, como los de muchos peces, que, con la poca\nluz que le llega de la superficie, le permiten ver a los depredadores y buscar alimento.\nAdemás, presenta un par de extensiones laterales que parecen otro par de ojos y que\nfuncionan como una especie de espejos para ver hacia abajo y a los lados y captar información\nde las profundidades marinas."
+				},
+				{
+					"FontSize" : 18,
+					"ArrayUnit" : "10 pt.",
+					"Paragraph" : "Este mismo año, un grupo de científicos de la universidad alemana de Tubinga\ndescubrieron una nueva especie de pez, el R.Natalensi. En un primer momento\nse creyó que este pez tenía cuatro ojos,\npero la verdad es que sólo tiene dos ojos, aunque muy particulares."
+				},
+				{
+					"FontSize" : 21.5,
+					"ArrayUnit" : "12 pt.",
+					"Paragraph" : "Algunas especies acuáticas, incluso, tienen visión ultravioleta\n(una longitud de onda más corta que la visible para los seres\nhumanos), que les permite captar más información del\nambiente que les rodea y así aumentar su supervivencia."
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "14 pt.",
+					"Paragraph" : "En general, los peces tienen una visión envidiable\nya que sus ojos están entrenados para ver bajo\nel agua, ver en la oscuridad y captar detalles a\ngrandes distancias."
+				},
+				{
+					"FontSize" : 29,
+					"ArrayUnit" : "16 pt.",
+					"Paragraph" : "Por ejemplo, en el caso de los peces su\nvisión está adaptada al medio acuático,\npero las características concretas de sus\nojos dependerán de la profundidad en la\nque se mueven o de si son o no depredadores."
+				},
+				{
+					"FontSize" : 32,
+					"ArrayUnit" : "18 pt.",
+					"Paragraph" : "Está claro que los ojos de cada ser\nvivo están diseñados y proporcionan\nla información que éste necesita, en\nfunción del entorno en el que se mueve,\nde sus depredadores, de su alimentación…"
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "20 pt.",
+					"Paragraph" : "Y cada uno proporciona\nuna visión del mundo muy\ndiferente."
+				},
+				{
+					"FontSize" : 43,
+					"ArrayUnit" : "24 pt.",
+					"Paragraph" : "Con párpados y sin\nellos, ojos dobles,\nsimples y complejos…"
+				},
+				{
+					"FontSize" : 50,
+					"ArrayUnit" : "28 pt.",
+					"Paragraph" : "En la naturaleza existen animales con todo tipo de sistemas visuales."
+				}
+			]
+		},
+		{
+			"LangId" : "it",
+			"LangName" : "Italiano",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 9.4,
+					"ArrayUnit" : "0.8",
+					"Paragraph" : "Il tuo sguardo in questo modo potrà comodamente spaziare dal foglio, alla tastiera, al monitor in modo fluido. Il miglioramento dell‘area di visione nella\ndistanza intermedia consente di lavorare al PC senza affaticare gli occhi. Queste lenti costituiscono la scelta giusta per chi desidera vedere in modo\nconfortevole e rilassato durante numerose attività che richiedono una buona visione da vicino, come ad esempio il bricolage, il cucito o lavori manuali.\n51 63 47 89 02"
+				},
+				{
+					"FontSize" : 10.7,
+					"ArrayUnit" : "0.7",
+					"Paragraph" : "Quando leggi, lavori al pc, esegui lavori manuali, di artigianato, di giardinaggio o ancora suoni\nuno strumento, desideri comunque tenere sempre sott‘occhio l‘ambiente circostante. I normali\nocchiali da lettura, tuttavia, non sono sufficienti, poiché coprono solo una distanza ravvicinata,\nche non va oltre i 40 cm. Le lenti riposanti per vicino sono la soluzione ideale per lavorare al pc.\n80 75 31 92 46"
+				},
+				{
+					"FontSize" : 12.5,
+					"ArrayUnit" : "0.6",
+					"Paragraph" : "Per migliorare la qualità visiva, le aziende di lenti hanno sviluppato lenti\nprogressive che consentono di vedere in modo naturale a tutte le\ndistanze, da vicino e da lontano, senza le fastidiose divisioni tra le\nzone funzionali di visione, come nelle tradizionali lenti bifocali.\n23 45 96 10 87"
+				},
+				{
+					"FontSize" : 15,
+					"ArrayUnit" : "0.5",
+					"Paragraph" : "I primi segnali sono quando, ad esempio, si legge un libro\no un giornale e si sente il bisogno di tenerli a una distanza\nsempre maggiore dagli occhi, finché la lunghezza del\nbraccio non basta più.\n28 59 63 14 70"
+				},
+				{
+					"FontSize" : 18.8,
+					"ArrayUnit" : "0.4",
+					"Paragraph" : "Una visione nitida influisce positivamente sulla\nqualità della nostra vita. Dopo i 40 anni, a causa del\nnaturale processo d‘invecchiamento, la maggior\nparte delle persone comincia ad avere difficoltà\nnel vedere nitidamente da vicino.\n78 32 51 01 49"
+				},
+				{
+					"FontSize" : 23.4,
+					"ArrayUnit" : "0.32",
+					"Paragraph" : "I nostri occhi aiutano ad orientarci,\na comunicare senza usare parole,\na percepire forme e colori.\n23 78 17 91 04"
+				},
+				{
+					"FontSize" : 30,
+					"ArrayUnit" : "0.25",
+					"Paragraph" : "Con gli occhi raccogliamo tantissime\ninformazioni, più che con qualsiasi\naltro organo sensoriale.\n36 75 82 94 19"
+				},
+				{
+					"FontSize" : 37.5,
+					"ArrayUnit" : "0.2",
+					"Paragraph" : "Vedere influisce sulla qualità\ndella vita.\n02 54 60 81 43"
+				},
+				{
+					"FontSize" : 18.8,
+					"ArrayUnit" : "0.1",
+					"Paragraph" : "Vedere bene è molto\nimportante.\n10 63 59 27 38"
+				}
+			]
+		},
+		{
+			"LangId" : "de",
+			"LangName" : "Deutsch",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 14.5,
+					"ArrayUnit" : "8 pt.",
+					"Paragraph" : "Die Brille hat das Häschen jetzt\nSich selbst auf seine Nas’ gesetzt;\nUnd schießen will’s aus dem Gewehr.\nDer Jäger aber fürcht’ sich sehr.\nEr läuft davon und springt und schreit:\n„Zu Hilf’, ihr Leut’, zu Hilf’, ihr Leut’!“"
+				},
+				{
+					"FontSize" : 18,
+					"ArrayUnit" : "10 pt.",
+					"Paragraph" : "Und nahm die Flint’ und auch die Brill’\nUnd schlich davon ganz leis’ und still."
+				},
+				{
+					"FontSize" : 21.5,
+					"ArrayUnit" : "12 pt.",
+					"Paragraph" : "Und als der Jäger schnarcht’ und schlief,\nDer Has ganz heimlich zu ihm lief"
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "14 pt.",
+					"Paragraph" : "Er legte sich ins grüne Gras;\nDas alles sah der kleine Has."
+				},
+				{
+					"FontSize" : 29,
+					"ArrayUnit" : "16 pt.",
+					"Paragraph" : "Jetzt schien die Sonne gar zu sehr,\nDa ward ihm sein Gewehr zu schwer."
+				},
+				{
+					"FontSize" : 32,
+					"ArrayUnit" : "18 pt.",
+					"Paragraph" : "Das Häschen sitzt im Blätterhaus\nUnd lacht den wilden Jäger aus."
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "20 pt.",
+					"Paragraph" : "Er trug die Brille auf der Nas’\nUnd wollte schießen tot den Has."
+				},
+				{
+					"FontSize" : 43,
+					"ArrayUnit" : "24 pt.",
+					"Paragraph" : "Es zog der wilde Jägersmann\nSein grasgrün neues Röcklein an;\nNahm Ranzen, Pulverhorn und Flint’-\nUnd lief hinaus in’s Feld geschwind."
+				},
+				{
+					"FontSize" : 50,
+					"ArrayUnit" : "28 pt.",
+					"Paragraph" : "Heinrich Hoffmanns\nDer Struwwelpeter\nDie Geschichte vom wilden Jäger"
+				}
+			]
+		},
+		{
+			"LangId" : "sv",
+			"LangName" : "Svenska",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 13,
+					"ArrayUnit" : "N5",
+					"Paragraph" : "Solen värmde mitt ansikte. Jag såg mig omkring och förundrades när dagen grydde"
+				},
+				{
+					"FontSize" : 15,
+					"ArrayUnit" : "N6",
+					"Paragraph" : "Runt omkring mig hördes ljuden från naturen som vaknade till liv.\nDen vackra morgonen var överväldigande"
+				},
+				{
+					"FontSize" : 20,
+					"ArrayUnit" : "N8",
+					"Paragraph" : "Ovanför träden cirklade fåglarna och sjöng den vackraste av\nnaturens melodier"
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "N10",
+					"Paragraph" : "Det var nästan inte ett moln på himlen.\nBara svaga stråk av vitt mot den fantastiska blå skyn"
+				},
+				{
+					"FontSize" : 31,
+					"ArrayUnit" : "N12",
+					"Paragraph" : "Aldrig i mitt liv hade jag upplevt en så\nfantastisk morgon"
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "N14",
+					"Paragraph" : "Ute på ängen betade hjortar gräset\nsom vara täckt av dagg"
+				},
+				{
+					"FontSize" : 46,
+					"ArrayUnit" : "N18",
+					"Paragraph" : "De små vågorna verkade\nfortsätta mil efter mil"
+				},
+				{
+					"FontSize" : 61,
+					"ArrayUnit" : "N24",
+					"Paragraph" : "Den stilla brisen gav\nen lätt krusning på\nvattenytan"
+				},
+				{
+					"FontSize" : 92,
+					"ArrayUnit" : "N36",
+					"Paragraph" : "På en vacker\näng nära sjön"
+				}
+			]
+		},
+		{
+			"LangId" : "de_LU",
+			"LangName" : "Deutsch (LU)",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 14.5,
+					"ArrayUnit" : "8 pt.",
+					"Paragraph" : "Kommen wir zum Ende. Wenn Sie bis hierhin alles ohne Schwierigkeiten lesen konnten, können Sie mit Ihrer\nneuen Brille mehr als zufrieden sein. Sie haben wieder die optimale Sehschärfe. Genießen Sie Ihre neue Brille,\nnur das Beste für Ihre Augen, natürlich von Apollo-Optik."
+				},
+				{
+					"FontSize" : 18,
+					"ArrayUnit" : "10 pt.",
+					"Paragraph" : "Jetzt wird es amtlich! Die meisten Verträge und Formulare sind in dieser Größe.\nDas Kleingedruckte stellt sich ja oft als das Wesentliche heraus. Beipackzettel von\nMedikamenten oder Zifferblätter von Armbanduhren sind noch andere Beispiele."
+				},
+				{
+					"FontSize" : 21.5,
+					"ArrayUnit" : "12 pt.",
+					"Paragraph" : "Denn die sind schon etwas kleiner gedruckt. In dieser Größe ist vielleicht\nauch Ihr Lieblingskrimi verfasst. Wenn Sie diesen Text nicht optimal lesen\nkönnen, müssen wir an Ihrer Brille aber noch etwas tun."
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "14 pt.",
+					"Paragraph" : "Dies ist die Größe der Überschriften in Tageszeitungen.\nDie Schriftgröße der Zeitungsartikel folgt im nächsten\nAbsatz."
+				},
+				{
+					"FontSize" : 29,
+					"ArrayUnit" : "16 pt.",
+					"Paragraph" : "Diesen Satz sollten Sie gut erkennen können.\nWenn nicht, sagen Sie uns Bescheid!\nJetzt wird‘s gleich noch etwas kleiner."
+				},
+				{
+					"FontSize" : 32,
+					"ArrayUnit" : "18 pt.",
+					"Paragraph" : "Damit wollen wir sicherstellen, dass\nSie mit der neuen Brille auch wirklich\noptimal sehen können. Denn Ihre\n100%ige Zufriedenheit liegt uns sehr\nam Herzen."
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "20 pt.",
+					"Paragraph" : "Und jetzt noch schnell das\nWichtigste: die Leseprobe!"
+				},
+				{
+					"FontSize" : 43,
+					"ArrayUnit" : "24 pt.",
+					"Paragraph" : "Eine neue Brille\nfür Sie?"
+				},
+				{
+					"FontSize" : 50,
+					"ArrayUnit" : "28 pt.",
+					"Paragraph" : "Heinrich Hoffmanns\nDer Struwwelpeter\nDie Geschichte vom wilden Jäger"
+				}
+			]
+		},
+		{
+			"LangId" : "en_GB",
+			"LangName" : "English (UK)",
+			"BlockArray" :
+			[
+				{
+					"FontSize" : 13,
+					"ArrayUnit" : "N5",
+					"Paragraph" : "Printing of this size is only used for special purposes, for ex ample, the small advertisements\nand financial columns in some journals, for small index lines and references, and pocket bibles\nand prayer books.\naware-caves-sea-cream"
+				},
+				{
+					"FontSize" : 15,
+					"ArrayUnit" : "N6",
+					"Paragraph" : "This is the smallest size type in general use. It is used for the classified advertisements\nin some papers, telephone directories, timetables, pocket diaries, and similar lists and\nbooks of reference.\nassume-once-vane-sum"
+				},
+				{
+					"FontSize" : 20,
+					"ArrayUnit" : "N8",
+					"Paragraph" : "The news columns in most of the daily papers use this as the\naverage size of print. Sometimes, the letters are larger than this,\nbut seldom are they smaller.\ncrow-verse-see-renew"
+				},
+				{
+					"FontSize" : 25,
+					"ArrayUnit" : "N10",
+					"Paragraph" : "Novels, magazines, text-books and printed\ninstructions are generally set in characters\nof about this size.\nnear-can-remove-sure"
+				},
+				{
+					"FontSize" : 31,
+					"ArrayUnit" : "N12",
+					"Paragraph" : "Books printed on very large pages and\nhaving many words on each line frequently\nuse letters similar to this specimen.\nname-use-means-arose"
+				},
+				{
+					"FontSize" : 36,
+					"ArrayUnit" : "N14",
+					"Paragraph" : "Book titles and paragraphs\nheadings in newspapers are\noften set in type like this, usually\nin CAPITAL LETTERS\nwere-crone-our-summer"
+				},
+				{
+					"FontSize" : 46,
+					"ArrayUnit" : "N18",
+					"Paragraph" : "LARGE head lines\nand children’s primers.\nnose-one-cause-even"
+				},
+				{
+					"FontSize" : 61,
+					"ArrayUnit" : "N24",
+					"Paragraph" : "DISPLAY\nand advertise clearly."
+				},
+				{
+					"FontSize" : 92,
+					"ArrayUnit" : "N36",
+					"Paragraph" : "Text for\nPOSTERS"
+				}
+			]
+		}
+	]
+}
