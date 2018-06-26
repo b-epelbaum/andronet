@@ -25,7 +25,7 @@ namespace NearVision
         public delegate void UpdateTextBlock(TextData textData);
 
         //declare event of type delegate
-        public event UpdateTextBlock updateTextBlockEvent;
+        public event UpdateTextBlock UpdateTextBlockEvent;
 
         public TextHandler(ConfigMgr config )
         {
@@ -38,7 +38,7 @@ namespace NearVision
         private void onLanguageChangedEvent(string langID)
         {
             initTextBlocks(langID);
-            updateTextBlockEvent?.Invoke(getCurrentTextData());
+            UpdateTextBlockEvent?.Invoke(getCurrentTextData());
         }
 
         private void initTextBlocks ( string langID )

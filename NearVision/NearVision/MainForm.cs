@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Timers;
 using System.Net;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using SimpleWebServer;
+using System.Drawing.Imaging;
 
 namespace NearVision
 {
@@ -14,8 +13,10 @@ namespace NearVision
     {
         private readonly ConfigMgr _config;
         private System.Timers.Timer _hideTimer;
-        private SettingDlg _settingsDlg;
         private readonly TextHandler _textHandler;
+        Image _currentImage;
+
+        Dictionary<string, Image> _imageMap;
 
         public MainForm()
         {
@@ -23,13 +24,14 @@ namespace NearVision
 
             _config = ConfigMgr.Init();
             _textHandler = new TextHandler(_config);
-            _textHandler.updateTextBlockEvent += OnUpdateTextBlock;
+            _textHandler.UpdateTextBlockEvent += OnUpdateTextBlock;
+
+            _imageMap = new Dictionary<string, Image>();
 
             InitGUI();
             InitMouseEvents();
             InitWebServer();
             InitStartText();
-
         }
 
      
@@ -83,24 +85,6 @@ namespace NearVision
             _textHeader.Text = td.UnitText;
         }
 
-        private void OnMouseClick(object sender, EventArgs e)
-        {
-            if ( this.WindowState == FormWindowState.Normal )
-            {
-                return;
-            }
-
-            if (_hideTimer.Enabled )
-            {
-                _hideTimer.Stop();
-            }
-            ControlPanel.BringToFront();
-            ControlPanel.Visible = true;
-
-            _hideTimer.Elapsed += OnHideTimer;
-            _hideTimer.Interval = 5000;
-            _hideTimer.Enabled = true;
-        }
 
         private void OnHideTimer(object sender, EventArgs e)
         {
@@ -110,37 +94,37 @@ namespace NearVision
 
         public string SendResponse(HttpListenerRequest request)
         {
-            var allRequet = request.ToString();
-            var cmd = request.QueryString.Get("cmd");
-            if (cmd == null) return string.Format("<HTML><BODY>cmd is not parsed</BODY></HTML>", DateTime.Now);
-            var selectedTest = GetSelectedTest(cmd);
-            if (selectedTest == null)
+            var cmdName = request.QueryString.Get("cmd");
+            if (cmdName == null) return string.Format("<HTML><BODY>cmd {0} is not present</BODY></HTML>", cmdName, DateTime.Now);
+            var selectedCmd = GetSelectedCmd(cmdName);
+            if (selectedCmd == null)
                 return string.Format("<HTML><BODY>test is null</BODY></HTML>", DateTime.Now);
-            var res = GenerateResponse(selectedTest);
+            var res = GenerateResponse(selectedCmd);
             Invoke((MethodInvoker)delegate {
-                SetWebPageByResponse(selectedTest.mTestId, res);
+                SetWebPageByResponse(selectedCmd, res);
             });
 
             return res;
         }
 
-        private static Constants.L40Cmd GetSelectedTest(string cmdCommand)
+        private Command GetSelectedCmd(string cmdCommand)
         {
-            return Constants.L40Cmd.Values.FirstOrDefault(test => test.mCmd.Equals(cmdCommand));
+           return _config.GetCommandByName(cmdCommand);
         }
 
-        public String GenerateResponse(Constants.L40Cmd selectedTest)
+        public String GenerateResponse(Command cmd)
         {
             var msec = (long)(DateTimeOffset.Now.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds ;
             System.Collections.IDictionary dict = new Dictionary<string, string>
             {
-                ["test"] = selectedTest.mTestId.ToString(),
-                ["cmd"] = selectedTest.mCmd,
+                ["test"] = cmd.ID.ToString(),
+                ["cmd"] = cmd.Cmd,
                 ["ptime"] = msec.ToString(),
                 ["lang"] = _config.CurrentLangId
             };
 
-            switch (selectedTest.mTestId) {
+            switch (cmd.ID)
+            {
                 case 500:
                 case 501:
                     break;
@@ -164,14 +148,13 @@ namespace NearVision
         }
 
   
-        public void SetWebPageByResponse(int testId, String response)
+        public void SetWebPageByResponse(Command cmd, String response)
         {
-            switch (testId)
+            switch (cmd.ID)
             {
                 case 501:
                     var html = HtmlHelper.generateHtmlPage(response);
                     _browserBox.DocumentText = html;
-
                     _browserBox.Visible = true;
                     _imageBox.Visible = _textHeader.Visible = _textBox.Visible = false;
                     ShowImage("nv_fixation_target.png");
@@ -186,93 +169,50 @@ namespace NearVision
                     _textHeader.Visible = _textBox.Visible = true;
                     break;
 
-                case 505: // - Jackson cross (to adjust the addition)
-                    ShowImage("nv_jackson_cross.png");
-                    break;
-
-                case 506: //- Red and green test (to adjust the addition)
-                    ShowImage("nv_red_green.png");
-                    break;
-                case 507: //- Amsler grid
-                    ShowImage("nv_amsler_grid.png");
-                    break;
-                case 508: //- Clock for astigmatism
-                    ShowImage("nv_parent_clock.png");                
-                    break;
-                case 509: //-NV_NUMBER_IN_HORIZONTAL_LINE
-                    ShowImage("fb_horizontal_opto.png");
-                    break;
-
-                case 510: // - Fixation disparity (cross with the dot) - need red/green filters
-                    ShowImage("fusion_large.png");
-                    break;
-                case 511: //- stereo acuity tests - need red/green filters
-                    ShowImage("stereo_large.png");
-                    break;
-                case 512: //-  worth - need red/green filters
-                    ShowImage("nv_worth.png");
-                    break;
-                case 513: //-NV_NUMBER_IN_VERTICAL_LINE
-                    ShowImage("nv_vertical_opto.png");
-                    break;
-                case 514://WESSON
-                    ShowImage("nv_wesson.png");
-                         //						imageView.setImageBitmap(getBitmapFromAssets("nv_images/nv_wesson.png"));
-                         //						getBaseActivity().changeScreenBrightness(100);
-                         //						imageView.setVisibility(View.VISIBLE);
-                         //_nvWebView.setVisibility(View.GONE);
-                         //gifImageView.setVisibility(View.GONE);
-                         //phoriaView.setVisibility(View.VISIBLE);
-                         //phoriaView.initScrollView();
-                         //phoriaView.move(155);
-                         //getBaseActivity().changeScreenBrightness(100);
-                         //						GifDrawable gifFromAssets = null;
-                         //						try {
-                         //							gifFromAssets = new GifDrawable( getResources().getAssets(), "nv_images/chien.gif" );
-                         //							gifImageView.setImageDrawable(gifFromAssets);
-                         //
-                         //							imageView.setImageBitmap(getBitmapFromAssets("nv_images/chien.gif"));
-                         //							getBaseActivity().changeScreenBrightness(100);
-                         //							imageView.setVisibility(View.GONE);
-                         //							_nvWebView.setVisibility(View.GONE);
-                         //							gifImageView.setVisibility(View.VISIBLE);
-                         //							_nvWebView.setVisibility(View.GONE);
-                         //						} catch (IOException e) {
-                         //							e.printStackTrace();
-                         //						}
-                    break;
-                case 515: //- Schober
-                    ShowImage("nv_schober.png");
-                    break;
-                case 516: //- nv_fixation_point
-                    ShowImage("nv_fixation_point.png");
-                    break;
-                case 517://- NV_CROSS_PHORIA
-                    ShowImage("nv_cross.png");
-                    break;
-                case 518://- NV_OXO_HORIZONTAL
-                    ShowImage("st_nv_mallet_h.png");
-                    break;
-                case 519://- NV_OXO_VERTICAL
-                    ShowImage("nv_mallet_v.png");
-                    break;
-                case 520://- NV_BROWSER
-                    ShowImage("nv_browser_en.png");
-                    break;
-                case 521://- NV_METRO
-                    ShowImage("nv_metro_en.png");
+                case 505: 
+                case 506:
+                case 507:
+                case 508:
+                case 509:
+                case 510: 
+                case 511: 
+                case 512: 
+                case 513: 
+                case 514:
+                case 515:
+                case 516:
+                case 517:
+                case 518:
+                case 519:
+                case 520:
+                case 521:
+                    if (cmd.Media.Length != 0)
+                        ShowImage(cmd.Media);
                     break;
 
             }
         }
 
-        private void ShowImage(String name)
+       
+        private void OnMouseClick(object sender, EventArgs e)
         {
-            Image bm = Bitmap.FromFile("./Resources/nv_images/" + name);
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                ControlPanel.BringToFront();
+                ControlPanel.Visible = true;
+                return;
+            }
 
-            _imageBox.Image = Image.FromFile("./Resources/nv_images/" + name);
-            _textBox.Visible = _textHeader.Visible = _browserBox.Visible = false;
-            _imageBox.Visible = true;
+            if (_hideTimer.Enabled)
+            {
+                _hideTimer.Stop();
+            }
+            ControlPanel.BringToFront();
+            ControlPanel.Visible = true;
+
+            _hideTimer.Elapsed += OnHideTimer;
+            _hideTimer.Interval = 5000;
+            _hideTimer.Enabled = true;
         }
 
         private void ZoomButton_Click(object sender, EventArgs e)
@@ -288,6 +228,7 @@ namespace NearVision
 
                 ControlPanel.BringToFront();
                 ControlPanel.Visible = true;
+                _hideTimer.Stop();
 
             }
             else
@@ -302,13 +243,62 @@ namespace NearVision
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
-            _settingsDlg = new SettingDlg (_config)
+            var settingsDlg = new SettingDlg (_config)
             {
                 StartPosition = FormStartPosition.CenterScreen,
                 TopMost = true
             };
+            settingsDlg.BrightnessChangedEvent += OnUpdateBrightness;
+            DialogResult res = settingsDlg.ShowDialog();
 
-            _settingsDlg.ShowDialog();
+            if ( res == DialogResult.Cancel)
+            {
+                _imageBox.Image = AdjustBrightness((Bitmap)_currentImage, _config.Brightness);
+            }
+        }
+
+        private void OnUpdateBrightness(int value)
+        {
+            _imageBox.Image = AdjustBrightness((Bitmap)_currentImage, value);
+        }
+
+        public static Bitmap AdjustBrightness(Bitmap Image, int Value)
+        {
+            //Bitmap TempBitmap = Image;
+            Bitmap adjustedBmp = new Bitmap(Image.Width, Image.Height);
+            var graphics = Graphics.FromImage(adjustedBmp);
+            float FinalValue = (float)Value / 255.0f;
+            float[][] colorMatrix =
+                {
+                    new float[] {1, 0, 0, 0, 0},
+                    new float[] {0, 1, 0, 0, 0},
+                    new float[] {0, 0, 1, 0, 0},
+                    new float[] {0, 0, 0, 1, 0},
+                    new float[] {FinalValue, FinalValue, FinalValue, 1, 1}
+                };
+
+            ImageAttributes Attributes = new ImageAttributes();
+            Attributes.SetColorMatrix(new ColorMatrix(colorMatrix), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
+            graphics.DrawImage(Image, new Rectangle(0, 0, Image.Width, Image.Height), 0, 0, Image.Width, Image.Height, GraphicsUnit.Pixel, Attributes);
+            //Attributes.Dispose();
+            //graphics.Dispose();
+            return adjustedBmp;
+        }
+
+
+        private void ShowImage(String name)
+        {
+            if (_imageMap.ContainsKey(name))
+                _currentImage = _imageMap[name];
+
+            else
+            {
+                _currentImage = Image.FromFile("./Resources/nv_images/" + name);
+                _imageMap[name] = _currentImage;
+            }
+            _imageBox.Image = AdjustBrightness((Bitmap)_currentImage, _config.Brightness);
+            _textBox.Visible = _textHeader.Visible = _browserBox.Visible = false;
+            _imageBox.Visible = true;
         }
     }
 }

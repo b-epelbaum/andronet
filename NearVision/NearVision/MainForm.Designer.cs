@@ -32,12 +32,12 @@
             this._browserBox = new System.Windows.Forms.WebBrowser();
             this._textHeader = new System.Windows.Forms.Label();
             this._textBox = new System.Windows.Forms.Label();
-            this.SettingButton = new System.Windows.Forms.Button();
+            this._imageBox = new System.Windows.Forms.PictureBox();
             this.ControlPanel = new NearVision.ExtendedPanel();
             this.ZoomButton = new System.Windows.Forms.Button();
-            this._imageBox = new System.Windows.Forms.PictureBox();
-            this.ControlPanel.SuspendLayout();
+            this.SettingButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._imageBox)).BeginInit();
+            this.ControlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // _browserBox
@@ -74,15 +74,16 @@
             this._textBox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this._textBox.Visible = false;
             // 
-            // SettingButton
+            // _imageBox
             // 
-            this.SettingButton.Image = global::NearVision.Properties.Resources.settings_icon_14976;
-            this.SettingButton.Location = new System.Drawing.Point(468, 14);
-            this.SettingButton.Name = "SettingButton";
-            this.SettingButton.Size = new System.Drawing.Size(96, 96);
-            this.SettingButton.TabIndex = 3;
-            this.SettingButton.UseVisualStyleBackColor = true;
-            this.SettingButton.Click += new System.EventHandler(this.SettingButton_Click);
+            this._imageBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._imageBox.Location = new System.Drawing.Point(0, 0);
+            this._imageBox.Name = "_imageBox";
+            this._imageBox.Size = new System.Drawing.Size(989, 744);
+            this._imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this._imageBox.TabIndex = 1;
+            this._imageBox.TabStop = false;
+            this._imageBox.Visible = false;
             // 
             // ControlPanel
             // 
@@ -98,6 +99,7 @@
             // 
             // ZoomButton
             // 
+            this.ZoomButton.FlatAppearance.BorderSize = 0;
             this.ZoomButton.Image = ((System.Drawing.Image)(resources.GetObject("ZoomButton.Image")));
             this.ZoomButton.Location = new System.Drawing.Point(62, 14);
             this.ZoomButton.Name = "ZoomButton";
@@ -106,16 +108,15 @@
             this.ZoomButton.UseVisualStyleBackColor = true;
             this.ZoomButton.Click += new System.EventHandler(this.ZoomButton_Click);
             // 
-            // _imageBox
+            // SettingButton
             // 
-            this._imageBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this._imageBox.Location = new System.Drawing.Point(0, 0);
-            this._imageBox.Name = "_imageBox";
-            this._imageBox.Size = new System.Drawing.Size(989, 744);
-            this._imageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this._imageBox.TabIndex = 1;
-            this._imageBox.TabStop = false;
-            this._imageBox.Visible = false;
+            this.SettingButton.Image = global::NearVision.Properties.Resources.settings_icon_14976;
+            this.SettingButton.Location = new System.Drawing.Point(457, 14);
+            this.SettingButton.Name = "SettingButton";
+            this.SettingButton.Size = new System.Drawing.Size(96, 96);
+            this.SettingButton.TabIndex = 3;
+            this.SettingButton.UseVisualStyleBackColor = true;
+            this.SettingButton.Click += new System.EventHandler(this.SettingButton_Click);
             // 
             // MainForm
             // 
@@ -133,8 +134,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NearVision Client";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.ControlPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this._imageBox)).EndInit();
+            this.ControlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

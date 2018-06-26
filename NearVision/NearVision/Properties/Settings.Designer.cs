@@ -37,10 +37,10 @@ namespace NearVision.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.1")]
-        public double BrightnessCoeff {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int BrightnessCoeff {
             get {
-                return ((double)(this["BrightnessCoeff"]));
+                return ((int)(this["BrightnessCoeff"]));
             }
             set {
                 this["BrightnessCoeff"] = value;

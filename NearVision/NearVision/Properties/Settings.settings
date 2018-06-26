@@ -5,8 +5,8 @@
     <Setting Name="LanguageID" Type="System.String" Scope="User">
       <Value Profile="(Default)">en</Value>
     </Setting>
-    <Setting Name="BrightnessCoeff" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">0.1</Value>
+    <Setting Name="BrightnessCoeff" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>
