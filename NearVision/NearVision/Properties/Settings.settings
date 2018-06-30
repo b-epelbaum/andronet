@@ -8,5 +8,8 @@
     <Setting Name="BrightnessCoeff" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="ConfigName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">NearVision.json</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

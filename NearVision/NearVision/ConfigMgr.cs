@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Windows.Forms;
 
 namespace NearVision
 {
-
+    
     public class General
     {
         public string ServerIP { get; set; }
@@ -21,11 +22,13 @@ namespace NearVision
         public string Type { get; set; }
         public string Name { get; set; }
         public string Media { get; set; }
+        public string Comment { get; set; }
     }
 
 
     public class BlockArray
     {
+        public string FontFamily { get; set; }
         public double FontSize { get; set; }
         public string ArrayUnit { get; set; }
         public string Paragraph { get; set; }
@@ -35,6 +38,7 @@ namespace NearVision
     {
         public string LangId { get; set; }
         public string LangName { get; set; }
+        public string FontFamily { get; set; }
         public List<BlockArray> BlockArray { get; set; }
     }
 
@@ -48,25 +52,54 @@ namespace NearVision
 
     public class ConfigMgr
     {
-        public delegate void LanguageChanged( string langId );
+        private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
+        public delegate void LanguageChanged( string langId );
         //declare event of type delegate
         public event LanguageChanged LanguageChangedEvent;
 
         public ConfigMgr(RootObject rootObj)
         {
+            //_log = log;
             RootObject = rootObj;
             General = RootObject.General;
         }
 
         public static ConfigMgr Init()
         {
-            var appPath = Application.StartupPath;
-            var retVal =  new ConfigMgr(JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(Application.StartupPath+"/NearVision.json")));
+            _log.Info("Reading JSON file from : " + Application.StartupPath + "/" + Properties.Settings.Default.ConfigName + "...");
+            ConfigMgr retVal = null;
+            try
+            {
+                retVal = new ConfigMgr(JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(Application.StartupPath + "/" + Properties.Settings.Default.ConfigName)));
+            }
+            catch (Exception e)
+            {
+                _log.Error("Exception caught : " + e.Message);
+                throw new NearVisionException("Error parsing JSON file", e);
+            }
+
+            if ( retVal == null )
+            {
+                throw new NearVisionException("Cannot create ConfigMgr object from JSON configuration file");
+            }
+
+            _log.Info("JSON parsed sucessfully");
             retVal.InitLangIDs();
             retVal.InitCommandMap();
 
             retVal._brightness = Properties.Settings.Default.BrightnessCoeff;
+
+            string dump = $"Configuration settings : \r\n--------------------------------------"
+                + $"\r\n\tCurrent lang ID : {retVal._currentLangId}\r\n\tCurrent language : { retVal._currentLangName}"
+                + $"\r\n\tCurrent brightness : {retVal._brightness}";
+            dump += $"\r\n\tFound{retVal._commandIdMap.Count} commands : ";
+            foreach (KeyValuePair<int, Command> entry in retVal._commandIdMap)
+            {
+                dump += ($"\r\n\t{entry.Value.Type} : {entry.Value.ID} : {entry.Value.Cmd} ({entry.Value.Comment})");
+            }
+            dump += "\r\n--------------------------------------";
+            _log.Info(dump);
             return retVal;
         }
 
@@ -92,6 +125,7 @@ namespace NearVision
         public string CurrentLangId {
             get => _currentLangId;
             set  {
+                _log.Info("Setting Current Language ID to " + value + "...");
                 _currentLangId = value;
                 Properties.Settings.Default.LanguageID = _currentLangId;
                 Properties.Settings.Default.Save();
@@ -104,6 +138,7 @@ namespace NearVision
             get => _brightness;
             set
             {
+                _log.Info("Setting brightness to " + value.ToString() + "...");
                 _brightness = value;
                 Properties.Settings.Default.BrightnessCoeff = _brightness;
                 Properties.Settings.Default.Save();
@@ -115,9 +150,15 @@ namespace NearVision
             get => _currentLangName;
             set
             {
+                _log.Info("Setting Current Language to " + value + "...");
                 _currentLangName = value;
                 CurrentLangId = RootObject.TextTestData.Where(l => l.LangName == value).Select(g => g.LangId).Single();
             }
+        }
+
+        public string GetCurrentLangFontFamily ( string langId )
+        {
+            return RootObject.TextTestData.Where(l => l.LangId == langId).Select(g => g.FontFamily).Single();
         }
 
         public Command GetCommandById(int CmdId)

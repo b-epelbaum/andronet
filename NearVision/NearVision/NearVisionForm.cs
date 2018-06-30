@@ -6,35 +6,75 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using SimpleWebServer;
 using System.Drawing.Imaging;
+using System.Linq;
 
 namespace NearVision
 {
-    public partial class MainForm : Form
+    public partial class NearVisionForm : Form
     {
-        private readonly ConfigMgr _config;
+        private ConfigMgr _config;
         private System.Timers.Timer _hideTimer;
-        private readonly TextHandler _textHandler;
-        Image _currentImage;
+        private TextHandler _textHandler;
+        private Image _currentImage;
+        private Dictionary<string, Image> _imageMap;
+        private LogForm _logForm;
 
-        Dictionary<string, Image> _imageMap;
+        private static readonly log4net.ILog _log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public MainForm()
+
+        public NearVisionForm()
         {
+
             InitializeComponent();
 
-            _config = ConfigMgr.Init();
+            log4net.Config.XmlConfigurator.Configure();
+            _logForm = new LogForm();
+            _logForm.Show();
+            _logForm.Hide();
+
+
+
+            _log.Info("Contructor started");
+            try
+            {
+                _log.Info("Initializing Configuration...");
+                _config = ConfigMgr.Init();
+            }
+            catch (NearVisionException e)
+            {
+                throw;
+            }
+
+            catch (Exception e)
+            {
+                new NearVisionException("Cannot initialize config", e);
+            }
+
+            try
+            {
+                InitWebServer();
+            }
+            catch (Exception e)
+            {
+                throw new NearVisionException("Cannot start http server", e);
+            }
+
             _textHandler = new TextHandler(_config);
             _textHandler.UpdateTextBlockEvent += OnUpdateTextBlock;
-
             _imageMap = new Dictionary<string, Image>();
 
             InitGUI();
             InitMouseEvents();
-            InitWebServer();
             InitStartText();
+
+            //_logForm.LogBoxInitedEvent += onLogBoxInitedEVent;
         }
 
-     
+        private void onLogBoxInitedEVent()
+        {
+
+        }
+
         private void InitGUI()
         {
             BringToFront();
@@ -43,6 +83,7 @@ namespace NearVision
             _imageBox.SizeMode = PictureBoxSizeMode.StretchImage;
             ControlPanel.Visible = _browserBox.Visible = _imageBox.Visible =  false;
             _textHeader.Visible = _textBox.Visible = true;
+            _textHeader.BringToFront();
             _hideTimer = new System.Timers.Timer();
         }
 
@@ -57,6 +98,7 @@ namespace NearVision
         private void InitWebServer()
         {
             var httpPreffix = _config.General.IsSSL ? "https://" : "http://";
+            _log.Info($"Initializing HTTP server with the following parameters :\r\n\t\tIP address : \t{_config.General.ServerIP}\r\n\t\tPort : \t{_config.General.Port}\r\n\t\tProtocol :\t{httpPreffix}");
             var ws = new WebServer(SendResponse, $"{httpPreffix}{_config.General.ServerIP}:{_config.General.Port}/");
             ws.Run();
         }
@@ -80,30 +122,56 @@ namespace NearVision
 
         private void UpdateTextBlock(TextData td )
         {
-            _textBox.Font = new Font(_textBox.Font.FontFamily, (float)td.FontSize, GraphicsUnit.Pixel);
+            _textBox.Font = new Font(td.FontFamily, (float)td.FontSize, GraphicsUnit.Pixel);
             _textBox.Text = td.Text;
             _textHeader.Text = td.UnitText;
-        }
+            _log.Info($"Setting new text : \r\n\t\t{td.Text}");
+            _log.Info($"Setting header text : {td.UnitText}");
 
+        }
 
         private void OnHideTimer(object sender, EventArgs e)
         {
-            ControlPanel.Visible = false;
+            Invoke(new Action(() =>
+            {
+                ControlPanel.Visible = false;
+            }));
             _hideTimer.Stop();
         }
 
         public string SendResponse(HttpListenerRequest request)
         {
+            var allKeys = string.Join("\r\n\t\t\t\t\t\t",
+            request.QueryString
+                   .AllKeys
+                   .Select(key => key + " : " + request.QueryString[key])
+                   .ToArray());
+
+            _log.Info("\r\n\r\n----------------------------------------------------------------------");
+            _log.Info($"Received HTTP request from {request.RemoteEndPoint.Address}; Request : \r\n\t\t\t\t\t\t{allKeys}");
             var cmdName = request.QueryString.Get("cmd");
-            if (cmdName == null) return string.Format("<HTML><BODY>cmd {0} is not present</BODY></HTML>", cmdName, DateTime.Now);
+            if (cmdName == null)
+            {
+                _log.Error($"Field \"command\" not has been specified");
+                _log.Info("----------------------------------------------------------------------\r\n");
+                return string.Format($"<HTML><BODY>cmd {cmdName} is not present</BODY></HTML>");
+            }
+
+
             var selectedCmd = GetSelectedCmd(cmdName);
             if (selectedCmd == null)
+            {
+                _log.Error($"Command {cmdName} is not valid in the current context");
+                _log.Info("----------------------------------------------------------------------\r\n");
                 return string.Format("<HTML><BODY>test is null</BODY></HTML>", DateTime.Now);
-            var res = GenerateResponse(selectedCmd);
-            Invoke((MethodInvoker)delegate {
-                SetWebPageByResponse(selectedCmd, res);
-            });
+            }
 
+            var res = GenerateResponse(selectedCmd);
+            _log.Info($"Response string : {res}");
+            Invoke((MethodInvoker)delegate {
+                PerformDisplayAction(selectedCmd, res);
+            });
+            _log.Info("----------------------------------------------------------------------\r\n");
             return res;
         }
 
@@ -144,11 +212,11 @@ namespace NearVision
                     dict["ac1"] = tdPrev.UnitText;
                     break;
             }
-            return JsonConvert.SerializeObject(dict, Formatting.None);
+            return JsonConvert.SerializeObject(dict, Formatting.Indented);
         }
 
   
-        public void SetWebPageByResponse(Command cmd, String response)
+        public void PerformDisplayAction(Command cmd, String response)
         {
             switch (cmd.ID)
             {
@@ -217,6 +285,7 @@ namespace NearVision
 
         private void ZoomButton_Click(object sender, EventArgs e)
         {
+            _log.Info("Zoom Button clicked");
             if ( this.WindowState == FormWindowState.Maximized )
             {
                 this.WindowState = FormWindowState.Normal;
@@ -243,6 +312,7 @@ namespace NearVision
 
         private void SettingButton_Click(object sender, EventArgs e)
         {
+            _log.Info("Settings Button clicked");
             var settingsDlg = new SettingDlg (_config)
             {
                 StartPosition = FormStartPosition.CenterScreen,
@@ -264,6 +334,9 @@ namespace NearVision
 
         public static Bitmap AdjustBrightness(Bitmap Image, int Value)
         {
+            if (Image == null)
+                return null;
+
             //Bitmap TempBitmap = Image;
             Bitmap adjustedBmp = new Bitmap(Image.Width, Image.Height);
             var graphics = Graphics.FromImage(adjustedBmp);
@@ -280,14 +353,14 @@ namespace NearVision
             ImageAttributes Attributes = new ImageAttributes();
             Attributes.SetColorMatrix(new ColorMatrix(colorMatrix), ColorMatrixFlag.Default, ColorAdjustType.Bitmap);
             graphics.DrawImage(Image, new Rectangle(0, 0, Image.Width, Image.Height), 0, 0, Image.Width, Image.Height, GraphicsUnit.Pixel, Attributes);
-            //Attributes.Dispose();
-            //graphics.Dispose();
             return adjustedBmp;
         }
 
 
         private void ShowImage(String name)
         {
+            _log.Info($"Displaying image : \"{name}\"");
+
             if (_imageMap.ContainsKey(name))
                 _currentImage = _imageMap[name];
 
@@ -296,9 +369,27 @@ namespace NearVision
                 _currentImage = Image.FromFile("./Resources/nv_images/" + name);
                 _imageMap[name] = _currentImage;
             }
+
+            if (_currentImage == null)
+            {
+                _log.Error($"Cannot load image : \"{name}\"");
+                return;
+            }
+
             _imageBox.Image = AdjustBrightness((Bitmap)_currentImage, _config.Brightness);
             _textBox.Visible = _textHeader.Visible = _browserBox.Visible = false;
             _imageBox.Visible = true;
+        }
+
+        private void NearVisionForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
+        private void LogButton_Click(object sender, EventArgs e)
+        {
+            _logForm.Show();
+            _logForm.BringToFront();
         }
     }
 }

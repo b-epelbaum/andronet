@@ -150,7 +150,7 @@
 			"Cmd" : "NV_NUMBER_IN_VERTICAL_LINE",
 			"Type" :  "NV_TEST",
 			"Name" :  "near_vision_image",
-			"Media" :  "",
+			"Media" :  "nv_vertical_opto.png",
 			"Comment" :  ""
 		},
 		{
@@ -240,6 +240,7 @@
 		{
 			"LangId" : "en",
 			"LangName" : "English (US)",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{
@@ -292,6 +293,7 @@
 		{
 			"LangId" : "fr",
 			"LangName" : "Français",
+			"FontFamily" : "Arial",
 			"BlockArray" :
 			[
 				{
@@ -344,6 +346,7 @@
 		{
 			"LangId" : "es",
 			"LangName" : "Español",
+			"FontFamily" : "Verdana",
 			"BlockArray" :
 			[
 				{
@@ -396,6 +399,7 @@
 		{
 			"LangId" : "it",
 			"LangName" : "Italiano",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{
@@ -448,6 +452,7 @@
 		{
 			"LangId" : "de",
 			"LangName" : "Deutsch",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{
@@ -500,6 +505,7 @@
 		{
 			"LangId" : "sv",
 			"LangName" : "Svenska",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{
@@ -552,6 +558,7 @@
 		{
 			"LangId" : "de_LU",
 			"LangName" : "Deutsch (LU)",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{
@@ -604,6 +611,7 @@
 		{
 			"LangId" : "en_GB",
 			"LangName" : "English (UK)",
+			"FontFamily" : "Tahoma",
 			"BlockArray" :
 			[
 				{

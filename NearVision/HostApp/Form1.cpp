@@ -14,9 +14,15 @@ namespace HostApp
 		//TODO: Add the constructor code here
 		//
 
-		auto nearVisionForm = gcnew MainForm();
-		nearVisionForm->Show();
-
+		try
+		{
+			auto nearVisionForm = gcnew NearVisionForm();
+			nearVisionForm->Show();
+		}
+		catch(NearVisionException^ e)
+		{
+			MessageBox::Show("Exception caught : "+ e->InnerException->Message);
+		}
 	}
 
 

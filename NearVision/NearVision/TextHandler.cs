@@ -8,14 +8,18 @@ namespace NearVision
 {
     public class TextData
     {
-        public TextData(BlockArray ba)
+        public TextData(BlockArray ba, ConfigMgr config)
         {
             UnitText = ba.ArrayUnit;
             FontSize = ba.FontSize;
+            FontFamily = config.GetCurrentLangFontFamily(config.CurrentLangId);
+            if ( ba.FontFamily != null )
+                FontFamily = ba.FontFamily;
             Text = ba.Paragraph;
         }
 
         public string UnitText { get; set; }
+        public string FontFamily { get; set; }
         public double FontSize { get; set; }
         public string Text { get; set; }
     }
@@ -52,7 +56,7 @@ namespace NearVision
                 _textIndex = 0;
             if (_textIndex > _currentBlockArrayList.Count)
                 _textIndex = _currentBlockArrayList.Count - 1;
-            return new TextData(_currentBlockArrayList[_textIndex]);
+            return new TextData(_currentBlockArrayList[_textIndex], _config);
         }
 
         public TextData next()

@@ -46,5 +46,14 @@ namespace NearVision.Properties {
                 this["BrightnessCoeff"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("NearVision.json")]
+        public string ConfigName {
+            get {
+                return ((string)(this["ConfigName"]));
+            }
+        }
     }
 }
